@@ -1,15 +1,6 @@
 
 .vs/PoS/v15/.suo
-*.nupkg
-*.nupkg
-*.pdb
 *.cache
-*.dll
-*.transform
-*.baml
-*.ps1
-*.psd1
-
 packages/
 */obj/
 */bin/
