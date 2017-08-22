@@ -1,0 +1,58 @@
+﻿<Page x:Class="PoS.Views.HomeTilesView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:local="clr-namespace:PoS.Views"
+      xmlns:prism="http://prismlibrary.com/"
+      prism:ViewModelLocator.AutoWireViewModel="True"
+      mc:Ignorable="d" 
+      Title="HomeTiles">
+    <Page.Resources>
+        <ResourceDictionary>
+            <Style x:Key="IconStyle" TargetType="Control">
+                <Setter Property="Height" Value="40"/>
+                <Setter Property="Width" Value="40"/>
+                <Setter Property="Foreground" Value="White"/>
+            </Style>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Icons.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="3"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="3"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="3"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <mah:Tile Title="Security Settings" Command="{Binding TileCommand}" CommandParameter="Security" Width="200" Background="Brown" Foreground="White" HorizontalTitleAlignment="Center">
+            <iconPacks:PackIconMaterial Style="{StaticResource IconStyle}" Kind="AccountKey" />
+        </mah:Tile>
+        <mah:Tile Title="Inventory" Grid.Column="2" Width="200" Command="{Binding TileCommand}" CommandParameter="Inventory"
+                  HorizontalTitleAlignment="Center" Foreground="White" Background="MidnightBlue">
+            <iconPacks:PackIconMaterial Style="{StaticResource IconStyle}" Kind="PackageVariant" />
+        </mah:Tile>
+        <mah:Tile Title="Cash Register" Grid.Column="4" Background="YellowGreen" Command="{Binding TileCommand}" CommandParameter="CashRegister" HorizontalTitleAlignment="Center" Width="200" Foreground="White">
+            <iconPacks:PackIconMaterial Style="{StaticResource IconStyle}" Kind="Cart" />
+        </mah:Tile>
+        <mah:Tile Title="Payroll" Foreground="White" Grid.Column="0" Grid.Row="2" Command="{Binding TileCommand}" CommandParameter="Payroll" HorizontalTitleAlignment="Center" Width="200">
+            <iconPacks:PackIconMaterial Kind="CashMultiple" Style="{StaticResource IconStyle}"/>
+        </mah:Tile>
+        <mah:Tile Title="Time Management" Foreground="White" Background="Orange" Grid.Column="2" Command="{Binding TileCommand}" CommandParameter="TimeManagement" Grid.Row="2" HorizontalTitleAlignment="Center" Width="200">
+            <iconPacks:PackIconMaterial Style="{StaticResource IconStyle}" Kind="Clock"/>
+        </mah:Tile>
+        <mah:Tile Title="Accounting" Foreground="White" Grid.Row="2" Grid.Column="4" Background="DarkOliveGreen" Command="{Binding TileCommand}" CommandParameter="Accounting" Width="200" HorizontalTitleAlignment="Center">
+            <iconPacks:PackIconMaterial Kind="Account" Style="{StaticResource IconStyle}"/>
+        </mah:Tile>
+    </Grid>
+</Page>

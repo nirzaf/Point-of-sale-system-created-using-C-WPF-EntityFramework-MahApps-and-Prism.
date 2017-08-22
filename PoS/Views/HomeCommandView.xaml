@@ -1,0 +1,22 @@
+﻿<StackPanel x:Class="PoS.Views.HomeCommandView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PoS.Views"
+            xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:prism="http://www.codeplex.com/prism"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d" VerticalAlignment="Center" HorizontalAlignment="Center">
+    <Button Command="{Binding HomeCommand}">
+        <StackPanel Orientation="Horizontal">
+            <Rectangle Width="20" Height="20"
+                       Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Fill"
+                                 Visual="{icon:PackIconMaterial Kind=Home}" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </StackPanel>
+    </Button>
+</StackPanel>

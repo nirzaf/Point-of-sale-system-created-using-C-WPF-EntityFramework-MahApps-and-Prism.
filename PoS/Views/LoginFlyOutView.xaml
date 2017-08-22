@@ -1,0 +1,30 @@
+﻿<mah:Flyout x:Class="PoS.Views.LoginFlyOutView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PoS.Views"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+            xmlns:prism="http://prismlibrary.com/" Name="FlyoutLogin"
+             mc:Ignorable="d" 
+            Position="Right"
+            Header="Log In"
+            Theme="Inverse"
+            Width="250"
+            prism:ViewModelLocator.AutoWireViewModel="True" IsOpen="{Binding Path=IsOpenFlyout, Mode=TwoWay}">
+    <Grid Margin="6,0,6,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="6"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="6"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBox mah:TextBoxHelper.AutoWatermark="True" mah:TextBoxHelper.Watermark="User Name" />
+        <PasswordBox mah:PasswordBoxHelper.CapsLockWarningToolTip="CAPS Lock is ON" Grid.Row="2"/>
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Command="{Binding LoginCommand}" Background="Blue" Foreground="White" Content="Login" Margin="0,0,6,0"/>
+            <Button Command="{Binding CancelCommand}" Content="Cancel" Margin="6,0,0,0"/>
+        </StackPanel>
+    </Grid>
+</mah:Flyout>
