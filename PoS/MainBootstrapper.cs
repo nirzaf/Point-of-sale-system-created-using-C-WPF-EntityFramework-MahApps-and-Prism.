@@ -14,6 +14,12 @@ namespace PoS
 {
 	public class MainBootstrapper: UnityBootstrapper
 	{
+		/// <summary>
+		/// Create Shell
+		/// </summary>
+		/// <returns>
+		/// Prism Shell
+		/// </returns>
 		protected override DependencyObject CreateShell ()
 		{
 			Container.RegisterInstance (typeof (Window),
