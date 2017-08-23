@@ -25,7 +25,7 @@ namespace PoS.Dal.Sql.Ctx.Context
 		internal PoSContext(string connstring)
 			: base (connstring)
 		{
-			Database.SetInitializer(new CreateDatabaseIfNotExists<PoSContext>());
+			Database.SetInitializer(new PoSCreateNotExist ());
 		}
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)

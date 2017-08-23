@@ -12,7 +12,6 @@ namespace PoS.Dal.Sql.Ctx.Context
 	{
 		protected override void Seed(PoSContext context)
 		{
-			base.Seed(context);
 
 			User user = new User();
 
@@ -28,6 +27,9 @@ namespace PoS.Dal.Sql.Ctx.Context
 			user.UserName = "admin";
 			user.Password = "@dm1n";
 			user.RoleType = ERoleType.Admin;
+
+			context.Users.Add (user);
+			base.Seed (context);
 		}
 	}
 }

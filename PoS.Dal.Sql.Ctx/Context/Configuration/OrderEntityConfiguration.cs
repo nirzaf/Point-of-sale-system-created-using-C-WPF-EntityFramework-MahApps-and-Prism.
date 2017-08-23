@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace PoS.Dal.Sql.Ctx.Configuration
 {
-	internal class OrderEntityConfiguration: EntityTypeConfiguration<Order>
+	public class OrderEntityConfiguration: EntityTypeConfiguration<Order>
 	{
-		internal OrderEntityConfiguration ()
+		public OrderEntityConfiguration ()
 		{
 			HasKey (o => new { o.Id, o.BarCode });
 		}

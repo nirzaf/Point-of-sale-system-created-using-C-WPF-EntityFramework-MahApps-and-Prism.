@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace PoS.Dal.Sql.Ctx.Configuration
 {
-	internal class ProductEntityConfiguration: EntityTypeConfiguration<Product>
+	public class ProductEntityConfiguration: EntityTypeConfiguration<Product>
 	{
-		internal ProductEntityConfiguration ()
+		public ProductEntityConfiguration ()
 		{
 			HasKey (p => new {
 				p.Id,

@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace PoS.Dal.Sql.Ctx.Configuration
 {
-	internal class UserEntityConfiguration: EntityTypeConfiguration<User>
+	public class UserEntityConfiguration: EntityTypeConfiguration<User>
 	{
-		internal UserEntityConfiguration ()
+		public UserEntityConfiguration ()
 		{
 			HasKey (u => new {
 				u.Id,
