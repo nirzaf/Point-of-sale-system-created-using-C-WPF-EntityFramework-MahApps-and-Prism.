@@ -23,8 +23,8 @@
         <TextBox mah:TextBoxHelper.AutoWatermark="True" mah:TextBoxHelper.Watermark="User Name" />
         <PasswordBox mah:PasswordBoxHelper.CapsLockWarningToolTip="CAPS Lock is ON" Grid.Row="2"/>
         <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Command="{Binding LoginCommand}" Background="Blue" Foreground="White" Content="Login" Margin="0,0,6,0"/>
-            <Button Command="{Binding CancelCommand}" Content="Cancel" Margin="6,0,0,0"/>
+            <Button Style="{StaticResource AccentedSquareButtonStyle}" Width="100" Command="{Binding LoginCommand}" Foreground="White" Content="Login" Margin="0,0,6,0"/>
+            <Button Style="{StaticResource AccentedSquareButtonStyle}" Width="100" Command="{Binding CancelCommand}" Content="Cancel" Margin="6,0,0,0"/>
         </StackPanel>
     </Grid>
 </mah:Flyout>

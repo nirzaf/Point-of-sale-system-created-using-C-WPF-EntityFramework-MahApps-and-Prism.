@@ -113,6 +113,9 @@
     <Compile Include="Views\HomeTilesView.xaml.cs">
       <DependentUpon>HomeTilesView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\InventoryMainView.xaml.cs">
+      <DependentUpon>InventoryMainView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoginCommandView.xaml.cs">
       <DependentUpon>LoginCommandView.xaml</DependentUpon>
     </Compile>
@@ -154,6 +157,10 @@
     <Page Include="Views\HomeTilesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\InventoryMainView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\LoginCommandView.xaml">
       <SubType>Designer</SubType>
