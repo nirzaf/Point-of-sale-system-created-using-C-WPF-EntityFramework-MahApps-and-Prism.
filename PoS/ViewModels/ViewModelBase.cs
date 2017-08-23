@@ -1,5 +1,6 @@
 ﻿using MahApps.Metro.Controls;
 using Microsoft.Practices.ServiceLocation;
+using PoS.BL.Service;
 using Prism.Events;
 using Prism.Mvvm;
 using Prism.Regions;
@@ -56,6 +57,20 @@ namespace PoS.ViewModels
 				this.SetProperty<IEventAggregator> (ref this.eventAggregator, value);
 			}
 		}
+
+		private ISecurityService securityService;
+		public ISecurityService SecurityService
+		{
+			get
+			{
+				return securityService;
+			}
+
+			private set
+			{
+				this.SetProperty<ISecurityService>(ref this.securityService, value);
+			}
+		}
 		#endregion
 
 		#region Flyout
@@ -78,6 +93,7 @@ namespace PoS.ViewModels
 		{
 			this.RegionManager = ServiceLocator.Current.GetInstance<IRegionManager> ();
 			this.EventAggregator = ServiceLocator.Current.GetInstance<IEventAggregator> ();
+			this.SecurityService = ServiceLocator.Current.GetInstance<ISecurityService>();
 		}
 		#endregion
 

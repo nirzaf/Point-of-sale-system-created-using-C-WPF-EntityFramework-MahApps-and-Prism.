@@ -1,4 +1,6 @@
 ﻿using Microsoft.Practices.Unity;
+using PoS.BL;
+using PoS.BL.Service;
 using PoS.Views;
 using Prism.Regions;
 using Prism.Unity;
@@ -50,6 +52,14 @@ namespace PoS
 			}
 
 			mutex.ReleaseMutex ();
+		}
+
+		protected override void ConfigureContainer()
+		{
+			base.ConfigureContainer();
+			ISecurityService securityService = TServiceFactory.GetSecurityService();
+			Container.RegisterInstance(securityService);
+			securityService.GetAllUsers();
 		}
 	}
 }
