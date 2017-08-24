@@ -26,6 +26,11 @@ namespace PoS.Dal.Mdl
 
 		public string Position { get; set; }
 
+		public byte[] Image
+		{
+			get; set;
+		}
+
 		public int Id
 		{
 			get; set;

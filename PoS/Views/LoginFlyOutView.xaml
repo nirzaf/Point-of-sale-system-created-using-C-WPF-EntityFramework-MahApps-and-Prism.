@@ -3,15 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:helper="clr-namespace:PoS.Helper"
              xmlns:local="clr-namespace:PoS.Views"
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
             xmlns:prism="http://prismlibrary.com/" Name="FlyoutLogin"
              mc:Ignorable="d" 
             Position="Right"
             Header="Log In"
-            Theme="Inverse"
+            Theme="Dark"
             Width="250"
-            prism:ViewModelLocator.AutoWireViewModel="True" IsOpen="{Binding Path=IsOpenFlyout, Mode=TwoWay}">
+            prism:ViewModelLocator.AutoWireViewModel="True"  IsOpen="{Binding Path=IsOpenFlyout, Mode=TwoWay}">
     <Grid Margin="6,0,6,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -20,10 +21,10 @@
             <RowDefinition Height="6"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <TextBox mah:TextBoxHelper.AutoWatermark="True" mah:TextBoxHelper.Watermark="User Name" />
-        <PasswordBox mah:PasswordBoxHelper.CapsLockWarningToolTip="CAPS Lock is ON" Grid.Row="2"/>
+        <TextBox mah:TextBoxHelper.AutoWatermark="True" Text="{Binding Path=UserName, Mode=TwoWay}" mah:TextBoxHelper.Watermark="User Name" />
+        <PasswordBox mah:PasswordBoxHelper.CapsLockWarningToolTip="CAPS Lock is ON" helper:PasswordHelper.Password="{Binding Path=Password, Mode=TwoWay}" Grid.Row="2"/>
         <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Style="{StaticResource AccentedSquareButtonStyle}" Width="100" Command="{Binding LoginCommand}" Foreground="White" Content="Login" Margin="0,0,6,0"/>
+            <Button IsDefault="True" Style="{StaticResource AccentedSquareButtonStyle}" Width="100" Command="{Binding LoginCommand}" Foreground="White" Content="Login" Margin="0,0,6,0"/>
             <Button Style="{StaticResource AccentedSquareButtonStyle}" Width="100" Command="{Binding CancelCommand}" Content="Cancel" Margin="6,0,0,0"/>
         </StackPanel>
     </Grid>

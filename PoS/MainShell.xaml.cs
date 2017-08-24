@@ -1,4 +1,6 @@
 ﻿using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
+using MahApps.Metro;
 using Prism.Regions;
 using System;
 using System.Collections.Generic;
@@ -29,7 +31,6 @@ namespace PoS
 			mRegionManager = regionManager;
 
 			if(mRegionManager != null) {
-
 			}
 		}
 

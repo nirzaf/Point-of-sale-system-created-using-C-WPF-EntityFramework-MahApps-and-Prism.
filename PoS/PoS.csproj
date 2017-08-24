@@ -69,6 +69,14 @@
       <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.Entity.6.9.9\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Prism, Version=6.3.0.0, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
       <HintPath>..\packages\Prism.Core.6.3.0\lib\net45\Prism.dll</HintPath>
       <Private>True</Private>
@@ -109,10 +117,13 @@
     </ApplicationDefinition>
     <Compile Include="Base\IFlyoutView.cs" />
     <Compile Include="CmnDefinition.cs" />
+    <Compile Include="Events\PoSEvents.cs" />
+    <Compile Include="Helper\PasswordHelper.cs" />
     <Compile Include="ViewModels\HomeCommandViewModel.cs" />
     <Compile Include="ViewModels\HomeTilesViewModel.cs" />
     <Compile Include="ViewModels\LoginCommandViewModel.cs" />
     <Compile Include="ViewModels\LoginFlyOutViewModel.cs" />
+    <Compile Include="ViewModels\UserInfoFlyoutViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\HomeCommandView.xaml.cs">
       <DependentUpon>HomeCommandView.xaml</DependentUpon>
@@ -128,6 +139,9 @@
     </Compile>
     <Compile Include="Views\LoginFlyOutView.xaml.cs">
       <DependentUpon>LoginFlyOutView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserInfoFlyoutView.xaml.cs">
+      <DependentUpon>UserInfoFlyoutView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainShell.xaml">
       <SubType>Designer</SubType>
@@ -174,6 +188,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\LoginFlyOutView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserInfoFlyoutView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

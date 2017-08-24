@@ -15,7 +15,7 @@
                        Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
                 <Rectangle.OpacityMask>
                     <VisualBrush Stretch="Fill"
-                                 Visual="{icon:PackIconMaterial Kind=Login}" />
+                                 Visual="{icon:PackIconMaterial Kind=Account}" />
                 </Rectangle.OpacityMask>
             </Rectangle>
         </StackPanel>

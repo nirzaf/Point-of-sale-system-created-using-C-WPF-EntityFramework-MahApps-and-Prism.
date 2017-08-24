@@ -26,6 +26,11 @@ namespace PoS.Dal.Mdl
 
 		public double ProductCost { get; set; }
 
+		public byte[] Image
+		{
+			get; set;
+		}
+
 		public int Id
 		{
 			get; set;

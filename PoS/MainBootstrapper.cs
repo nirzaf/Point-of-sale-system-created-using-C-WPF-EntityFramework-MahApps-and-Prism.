@@ -40,9 +40,11 @@ namespace PoS
 
 				if (regionManager != null) {
 					regionManager.RegisterViewWithRegion ("MainRegion", typeof (HomeTilesView));
+					regionManager.RegisterViewWithRegion ("MainRegion", typeof (InventoryMainView));
 					regionManager.RegisterViewWithRegion ("LeftCommandRegion", typeof (HomeCommandView));
 					regionManager.RegisterViewWithRegion ("RightCommandRegion", typeof (LoginCommandView));
 					regionManager.RegisterViewWithRegion ("FlyoutControlRegion", typeof (LoginFlyOutView));
+					regionManager.RegisterViewWithRegion ("FlyoutControlRegion", typeof (UserInfoFlyoutView));
 				}
 
 				App.Current.MainWindow.Show ();
@@ -59,7 +61,12 @@ namespace PoS
 			base.ConfigureContainer();
 			ISecurityService securityService = TServiceFactory.GetSecurityService();
 			Container.RegisterInstance(securityService);
-			securityService.GetAllUsers();
+			Container.RegisterInstance (Container);
+
+			Container.RegisterTypeForNavigation<HomeTilesView> ("HomeTilesView");
+			Container.RegisterTypeForNavigation<InventoryMainView> ("InventoryMainView");
+
+			var regionManager = this.Container.Resolve<IRegionManager>();
 		}
 	}
 }

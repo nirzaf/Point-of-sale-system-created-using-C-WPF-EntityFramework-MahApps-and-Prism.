@@ -18,7 +18,7 @@ namespace PoS.BL
 		{
 			if (mTransact == null)
 			{
-				mTransact = new PoSDbTransact(ConnectionString);
+				mTransact = new PoSDbTransact("PosDbMySql");
 			}
 
 			return mTransact.UnitOfWork;

@@ -1,6 +1,9 @@
 ﻿using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Practices.ServiceLocation;
+using Microsoft.Practices.Unity;
 using PoS.BL.Service;
+using PoS.Dal.Mdl;
 using Prism.Events;
 using Prism.Mvvm;
 using Prism.Regions;
@@ -10,11 +13,14 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace PoS.ViewModels
 {
 	public class ViewModelBase: BindableBase, INotifyPropertyChanged
 	{
+		private IDialogCoordinator _dialog;
+
 		#region Property
 		private bool _isEnabled;
 		public bool IsEnabled
@@ -58,6 +64,19 @@ namespace PoS.ViewModels
 			}
 		}
 
+		private IUnityContainer unityContainer;
+		public IUnityContainer Container
+		{
+			get
+			{
+				return unityContainer;
+			}
+			private set
+			{
+				this.SetProperty<IUnityContainer> (ref this.unityContainer, value);
+			}
+		}
+
 		private ISecurityService securityService;
 		public ISecurityService SecurityService
 		{
@@ -94,6 +113,31 @@ namespace PoS.ViewModels
 			this.RegionManager = ServiceLocator.Current.GetInstance<IRegionManager> ();
 			this.EventAggregator = ServiceLocator.Current.GetInstance<IEventAggregator> ();
 			this.SecurityService = ServiceLocator.Current.GetInstance<ISecurityService>();
+			this.Container = ServiceLocator.Current.GetInstance<IUnityContainer> ();
+			_dialog = DialogCoordinator.Instance;
+		}
+		#endregion
+
+		#region Methods
+
+		protected async void ShowMessage (string iMessage)
+		{
+			await ((MetroWindow)Container.Resolve<Window> ("MainShell")).ShowMessageAsync ("PoS", iMessage);
+		}
+
+		protected bool IsLogin (out User oUserModel)
+		{
+			bool oLogin = true;
+
+			oUserModel = null;
+
+			oUserModel = ServiceLocator.Current.GetInstance<User> ();
+
+			if (oUserModel == null || oUserModel.Id == 0) {
+				oLogin = false;
+			}
+
+			return oLogin;
 		}
 		#endregion
 

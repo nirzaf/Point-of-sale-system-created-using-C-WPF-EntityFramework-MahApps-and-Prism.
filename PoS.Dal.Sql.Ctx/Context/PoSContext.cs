@@ -1,4 +1,5 @@
-﻿using PoS.Dal.Mdl;
+﻿using MySql.Data.Entity;
+using PoS.Dal.Mdl;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace PoS.Dal.Sql.Ctx.Context
 {
+	[DbConfigurationType (typeof (MySqlEFConfiguration))]
 	internal class PoSContext : DbContext, IPoSContext
 	{
 		public DbSet<User> Users { get; set; }

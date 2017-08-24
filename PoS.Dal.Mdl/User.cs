@@ -43,6 +43,11 @@ namespace PoS.Dal.Mdl
 			get; set;
 		}
 
+		public byte[] Image
+		{
+			get; set;
+		}
+
 		public int Id
 		{
 			get; set;

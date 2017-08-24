@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using PoS.Dal.Mdl;
+using Prism.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace PoS.ViewModels
 	public class LoginCommandViewModel : ViewModelBase
 	{
 		private string _loginText;
+		private string _flyouName;
 		public string LoginText
 		{
 			get
@@ -38,7 +40,13 @@ namespace PoS.ViewModels
 
 		private void ShowLoginFlyout ()
 		{
-			ShowFlyout ("FlyoutLogin");
+			User user = new User();
+			if (IsLogin (out user) == false) {
+				ShowFlyout ("FlyoutLogin");
+			}
+			else {
+				ShowFlyout ("FlyoutUserInfo");
+			}
 		}
 	}
 }
