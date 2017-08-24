@@ -1,0 +1,45 @@
+﻿<mah:Flyout x:Class="PoS.Views.UserInfoFlyoutView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PoS.Views"
+             mc:Ignorable="d" 
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+            xmlns:prism="http://prismlibrary.com/" Name="FlyoutUserInfo"
+            Position="Right"
+            Header="User Information"
+            Theme="Accent"
+            Width="300"
+            prism:ViewModelLocator.AutoWireViewModel="True"  IsOpen="{Binding Path=IsOpenFlyout, Mode=TwoWay}">
+    <Grid Margin="6,0,6,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="6"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="6"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="6"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Border HorizontalAlignment="Center" BorderBrush="Black" BorderThickness="2">
+            <StackPanel Orientation="Horizontal">
+                <Rectangle Width="100" Height="100" Fill="Gray">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill"
+                                 Visual="{iconPacks:PackIconMaterial Kind=Account}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </StackPanel>
+        </Border>
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <Label Content="Name: " HorizontalContentAlignment="Right"/>
+            <TextBlock VerticalAlignment="Center" Text="{Binding Path=FullName}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="4" VerticalAlignment="Stretch">
+            
+        </StackPanel>
+        <Button Content="Logout" Background="Red" Foreground="White" Command="{Binding LogoutCommand}" Grid.Row="6"/>
+    </Grid>
+</mah:Flyout>
