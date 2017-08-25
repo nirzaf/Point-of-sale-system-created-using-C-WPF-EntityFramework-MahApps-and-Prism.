@@ -63,9 +63,6 @@ namespace PoS
 			Container.RegisterInstance(securityService);
 			Container.RegisterInstance (Container);
 
-			Container.RegisterTypeForNavigation<HomeTilesView> ("HomeTilesView");
-			Container.RegisterTypeForNavigation<InventoryMainView> ("InventoryMainView");
-
 			var regionManager = this.Container.Resolve<IRegionManager>();
 		}
 	}

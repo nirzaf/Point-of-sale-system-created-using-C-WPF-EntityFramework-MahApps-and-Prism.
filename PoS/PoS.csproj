@@ -117,10 +117,15 @@
     </ApplicationDefinition>
     <Compile Include="Base\IFlyoutView.cs" />
     <Compile Include="CmnDefinition.cs" />
+    <Compile Include="Ctrls\DisplayMenuView.cs" />
+    <Compile Include="Ctrls\HamburgerMenu.cs" />
+    <Compile Include="Ctrls\HamburgerMenuIconItem.cs" />
+    <Compile Include="Ctrls\PoSTile.cs" />
     <Compile Include="Events\PoSEvents.cs" />
     <Compile Include="Helper\PasswordHelper.cs" />
     <Compile Include="ViewModels\HomeCommandViewModel.cs" />
     <Compile Include="ViewModels\HomeTilesViewModel.cs" />
+    <Compile Include="ViewModels\InventoryMainViewModel.cs" />
     <Compile Include="ViewModels\LoginCommandViewModel.cs" />
     <Compile Include="ViewModels\LoginFlyOutViewModel.cs" />
     <Compile Include="ViewModels\UserInfoFlyoutViewModel.cs" />
@@ -130,6 +135,9 @@
     </Compile>
     <Compile Include="Views\HomeTilesView.xaml.cs">
       <DependentUpon>HomeTilesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InventoryDataView.xaml.cs">
+      <DependentUpon>InventoryDataView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\InventoryMainView.xaml.cs">
       <DependentUpon>InventoryMainView.xaml</DependentUpon>
@@ -176,6 +184,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\HomeTilesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\InventoryDataView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

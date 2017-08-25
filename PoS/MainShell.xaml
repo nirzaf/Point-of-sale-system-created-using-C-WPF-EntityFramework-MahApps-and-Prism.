@@ -22,6 +22,6 @@
         <mah:FlyoutsControl x:Name="FlyoutControlRegion" prism:RegionManager.RegionName="FlyoutControlRegion" />
     </mah:MetroWindow.Flyouts>
     <Grid>
-        <Frame HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="frameMainRegion" NavigationUIVisibility="Hidden" prism:RegionManager.RegionName="MainRegion" />
+        <Frame HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="frameMainRegion" NavigationUIVisibility="Hidden" prism:RegionManager.RegionName="MainRegion" />
     </Grid>
 </mah:MetroWindow>

@@ -6,13 +6,22 @@ using System.Threading.Tasks;
 
 namespace PoS
 {
-	public enum ECommands
+	public static class ViewNames
 	{
-		Security,
-		Inventory,
-		CashRegister,
-		Payroll,
-		TimeManagement,
-		Accounting
+		public const string InventoryMainView = "InventoryMainView";
+		public const string HomeMainView = "HomeTilesView";
+	}
+
+	public class ViewContent
+	{
+		public string ViewName
+		{
+			get; set;
+		}
+
+		public int IconIdx
+		{
+			get; set;
+		}
 	}
 }

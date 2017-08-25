@@ -60,7 +60,12 @@ namespace PoS.ViewModels
 		}
 		private void GoBack ()
 		{
-			RegionManager.RequestNavigate ("MainRegion", "HomeTilesView");
+			if (_journal.CanGoBack == false) {
+				RegionManager.RequestNavigate ("MainRegion", "HomeTilesView");
+			}
+			else {
+				_journal.GoBack ();
+			}
 		}
 
 		private bool CanGoHome ()

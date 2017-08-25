@@ -6,8 +6,9 @@
       xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
       xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
       xmlns:local="clr-namespace:PoS.Views"
+      xmlns:ctrl="clr-namespace:PoS.Ctrls"
       xmlns:prism="http://prismlibrary.com/"
-      prism:ViewModelLocator.AutoWireViewModel="True"
+      prism:ViewModelLocator.AutoWireViewModel="True" HorizontalAlignment="Center" VerticalAlignment="Center"
       mc:Ignorable="d" 
       Title="HomeTiles">
     <Page.Resources>
@@ -38,10 +39,10 @@
         <mah:Tile Title="Security Settings" Command="{Binding TileCommand}" CommandParameter="Security" Width="200" Background="Brown" Foreground="White" HorizontalTitleAlignment="Center">
             <iconPacks:PackIconMaterial Style="{StaticResource IconStyle}" Kind="AccountKey" />
         </mah:Tile>
-        <mah:Tile Title="Inventory" Grid.Column="2" Width="200" Command="{Binding TileCommand}" CommandParameter="Inventory"
+        <ctrl:PoSTile Title="Inventory" Grid.Column="2" Width="200" Command="{Binding SetCommand}" RoleType="User" ViewName="InventoryMainView" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
                   HorizontalTitleAlignment="Center" Foreground="White" Background="MidnightBlue">
             <iconPacks:PackIconMaterial Style="{StaticResource IconStyle}" Kind="PackageVariant" />
-        </mah:Tile>
+        </ctrl:PoSTile>
         <mah:Tile Title="Cash Register" Grid.Column="4" Background="YellowGreen" Command="{Binding TileCommand}" CommandParameter="CashRegister" HorizontalTitleAlignment="Center" Width="200" Foreground="White">
             <iconPacks:PackIconMaterial Style="{StaticResource IconStyle}" Kind="Cart" />
         </mah:Tile>
