@@ -68,5 +68,10 @@ namespace PoS.Dal.Mdl
 		{
 			get; set;
 		}
+
+		public User ()
+		{
+			RoleType = ERoleType.User;
+		}
 	}
 }
