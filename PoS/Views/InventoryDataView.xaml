@@ -3,46 +3,97 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
              xmlns:local="clr-namespace:PoS.Views"
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
              mc:Ignorable="d">
-    <Grid>
+    <Grid ShowGridLines="True">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="6"/>
             <ColumnDefinition/>
+            <ColumnDefinition Width="3"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="6"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <StackPanel Orientation="Horizontal">
-                <Button Foreground="White" Background="Blue" Width="40" Height="40" Style="{DynamicResource MetroCircleButtonStyle}" ToolTip="Add">
-                    <StackPanel Orientation="Horizontal">
-                        <Rectangle Width="20" Height="20"
+        <GroupBox Header="Product List" HorizontalAlignment="Left">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button Foreground="White" Background="Blue" Width="40" Height="40" Style="{DynamicResource MetroCircleButtonStyle}" ToolTip="Add">
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle Width="20" Height="20"
                        Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
-                            <Rectangle.OpacityMask>
-                                <VisualBrush Stretch="Fill"
+                                <Rectangle.OpacityMask>
+                                    <VisualBrush Stretch="Fill"
                                  Visual="{icon:PackIconMaterial Kind=Plus}" />
-                            </Rectangle.OpacityMask>
-                        </Rectangle>
-                    </StackPanel>
-                </Button>
-                <Button Foreground="White" Background="Red" Width="40" Height="40" Style="{DynamicResource MetroCircleButtonStyle}">
-                    <StackPanel Orientation="Horizontal">
-                        <Rectangle Width="20" Height="20"
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+                        </StackPanel>
+                    </Button>
+                    <Button Foreground="White" Background="Green" ToolTip="Edit" Width="40" Height="40" Style="{DynamicResource MetroCircleButtonStyle}">
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle Width="20" Height="20"
                        Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
-                            <Rectangle.OpacityMask>
-                                <VisualBrush Stretch="Fill"
+                                <Rectangle.OpacityMask>
+                                    <VisualBrush Stretch="Fill"
+                                 Visual="{icon:PackIconEntypo Kind=Edit}" />
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+                        </StackPanel>
+                    </Button>
+                    <Button Foreground="White" Background="Red" Width="40" Height="40" Style="{DynamicResource MetroCircleButtonStyle}" ToolTip="Delete">
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle Width="20" Height="20"
+                       Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                                <Rectangle.OpacityMask>
+                                    <VisualBrush Stretch="Fill"
                                  Visual="{icon:PackIconEntypo Kind=Cross}" />
-                            </Rectangle.OpacityMask>
-                        </Rectangle>
-                    </StackPanel>
-                </Button>
-            </StackPanel>
-        </Grid>
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                <DataGrid Grid.Row="2" CanUserAddRows="False" AutoGenerateColumns="False" CanUserResizeRows="False" IsReadOnly="True" ItemsSource="{Binding Path=ProductList}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Code" Binding="{Binding BarCode}" Width="180" />
+                        <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="250"/>
+                        <DataGridTextColumn Header="In-Stock" Binding="{Binding InStock}" Width="100"/>
+                        <DataGridTextColumn Header="Stock Price" Binding="{Binding Path=StockPrice, StringFormat=0.00}" Width="100"/>
+                        <DataGridTextColumn Header="Retail Price" Binding="{Binding Path=RetailPrice, StringFormat=0.00}" Width="100"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Product Information" Grid.Column="2" HorizontalAlignment="Left">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Style="{StaticResource Label2}" Text="Code:"/>
+                <TextBox Grid.Row="2" Margin="6,0,6,0" Text="{Binding Path=BarCode, Mode=TwoWay}" MaxLength="100" Width="300"/>
+                <TextBlock Style="{StaticResource Label2}" Text="Name:" Grid.Row="4"/>
+                <TextBox Grid.Row="6" Margin="6,0,6,0" Text="{Binding Path=Name, Mode=TwoWay}" MaxHeight="50" Width="300"/>
+            </Grid>
+        </GroupBox>
     </Grid>
 </UserControl>

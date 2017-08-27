@@ -10,6 +10,18 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.AnimatedTabControl.xaml" />
+                <ResourceDictionary>
+                    <Style x:Key="Label1" TargetType="TextBlock">
+                        <Setter Property="FontSize" Value="26"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                    </Style>
+                </ResourceDictionary>
+                <ResourceDictionary>
+                    <Style x:Key="Label2" TargetType="TextBlock">
+                        <Setter Property="FontSize" Value="18"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                    </Style>
+                </ResourceDictionary>
                 <ResourceDictionary Source="/Resources/Icons.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

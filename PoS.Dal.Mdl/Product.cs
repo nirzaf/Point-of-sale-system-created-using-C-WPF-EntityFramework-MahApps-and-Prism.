@@ -26,6 +26,8 @@ namespace PoS.Dal.Mdl
 
 		public double ProductCost { get; set; }
 
+		public double CriticalLimit { get; set; }
+
 		public byte[] Image
 		{
 			get; set;
@@ -50,6 +52,11 @@ namespace PoS.Dal.Mdl
 		public DateTime ModifiedDate
 		{
 			get; set;
+		}
+
+		public Product()
+		{
+			CriticalLimit = 5;
 		}
 	}
 }

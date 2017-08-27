@@ -11,7 +11,6 @@ namespace PoS.ViewModels
 	public class LoginCommandViewModel : ViewModelBase
 	{
 		private string _loginText;
-		private string _flyouName;
 		public string LoginText
 		{
 			get

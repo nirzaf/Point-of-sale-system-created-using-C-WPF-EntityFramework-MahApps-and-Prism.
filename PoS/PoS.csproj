@@ -125,6 +125,7 @@
     <Compile Include="Helper\PasswordHelper.cs" />
     <Compile Include="ViewModels\HomeCommandViewModel.cs" />
     <Compile Include="ViewModels\HomeTilesViewModel.cs" />
+    <Compile Include="ViewModels\InventoryDataViewModel.cs" />
     <Compile Include="ViewModels\InventoryMainViewModel.cs" />
     <Compile Include="ViewModels\LoginCommandViewModel.cs" />
     <Compile Include="ViewModels\LoginFlyOutViewModel.cs" />
