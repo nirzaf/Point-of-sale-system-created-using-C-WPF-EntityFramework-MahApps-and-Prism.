@@ -15,7 +15,7 @@
             <ColumnDefinition Width="3"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <GroupBox Header="Product List" HorizontalAlignment="Left">
+        <GroupBox Header="Product List" HorizontalAlignment="Stretch">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -57,7 +57,7 @@
                         </StackPanel>
                     </Button>
                 </StackPanel>
-                <DataGrid Grid.Row="2" CanUserAddRows="False" AutoGenerateColumns="False" CanUserResizeRows="False" IsReadOnly="True" ItemsSource="{Binding Path=ProductList}">
+                <DataGrid Grid.Row="2" CanUserAddRows="False" AutoGenerateColumns="False" CanUserResizeRows="False" IsReadOnly="True" SelectedItem="{Binding SelectedProduct}" ItemsSource="{Binding Path=ProductList}">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Code" Binding="{Binding BarCode}" Width="180" />
                         <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="250"/>
@@ -88,11 +88,31 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="6"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <TextBlock Style="{StaticResource Label2}" Text="Code:"/>
-                <TextBox Grid.Row="2" Margin="6,0,6,0" Text="{Binding Path=BarCode, Mode=TwoWay}" MaxLength="100" Width="300"/>
+                <TextBox Grid.Row="2" Margin="6,0,6,0" Text="{Binding Path=SelectedProduct.BarCode, Mode=TwoWay}" MaxLength="100" Width="300"/>
                 <TextBlock Style="{StaticResource Label2}" Text="Name:" Grid.Row="4"/>
-                <TextBox Grid.Row="6" Margin="6,0,6,0" Text="{Binding Path=Name, Mode=TwoWay}" MaxHeight="50" Width="300"/>
+                <TextBox Grid.Row="6" Margin="6,0,6,0" Text="{Binding Path=SelectedProduct.Name, Mode=TwoWay}" MaxHeight="50" Width="300"/>
+                <TextBlock Style="{StaticResource Label2}" Text="Description:" Grid.Row="8"/>
+                <TextBox Grid.Row="10" Margin="6,0,6,0" Text="{Binding Path=Description, Mode=TwoWay}" AcceptsReturn="True" Height="100" MaxHeight="50" Width="300"/>
+                <TextBlock Style="{StaticResource Label2}" Text="Stock Type:" Grid.Row="12"/>
+                <ComboBox ItemsSource="{Binding Path=StockTypeList, Mode=TwoWay}" Grid.Row="14" SelectedItem="{Binding Path=SelectedStockType, Mode=TwoWay}"/>
+                <TextBlock Style="{StaticResource Label2}" Text="Qty:" Grid.Row="16"/>
+                <mah:NumericUpDown Value="{Binding Path=SelectedProduct.InStock, Mode=TwoWay, StringFormat=0.00}" Grid.Row="18"/>
+                <TextBlock Style="{StaticResource Label2}" Text="Stock Price:" Grid.Row="20"/>
+                <mah:NumericUpDown Value="{Binding Path=SelectedProduct.StockPrice, Mode=TwoWay, StringFormat=0.00}" Grid.Row="22"/>
+                <TextBlock Style="{StaticResource Label2}" Text="Retail Price:" Grid.Row="24"/>
+                <mah:NumericUpDown Value="{Binding Path=SelectedProduct.RetailPrice, Mode=TwoWay, StringFormat=0.00}" Grid.Row="26"/>
             </Grid>
         </GroupBox>
     </Grid>

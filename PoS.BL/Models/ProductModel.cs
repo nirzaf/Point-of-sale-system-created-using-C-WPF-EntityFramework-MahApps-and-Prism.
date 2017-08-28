@@ -122,9 +122,38 @@ namespace PoS.BL.Models
 			}
 		}
 
+		public string Description
+		{
+			get
+			{
+				return _model.ProductDesc;
+			}
+			set
+			{
+				_model.ProductDesc = value;
+			}
+		}
+
+		public int ProductId
+		{
+			get
+			{
+				return _model.Id;
+			}
+			set
+			{
+				_model.Id = value;
+			}
+		}
+
 		public ProductModel()
 		{
 			_model = new Product();
+		}
+
+		public ProductModel(Product iModel)
+		{
+			_model = iModel;
 		}
 	}
 }

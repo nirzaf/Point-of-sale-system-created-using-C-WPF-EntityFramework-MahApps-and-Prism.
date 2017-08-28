@@ -65,6 +65,7 @@ namespace PoS.ViewModels
 			Container.RegisterInstance (usermodel);
 			TileCommand.RaiseCanExecuteChanged ();
 			SetCommand.RaiseCanExecuteChanged ();
+			RegionManager.RequestNavigate("MainRegion", "HomeTilesView");
 		}
 
 		public bool CanExecute (string iViewName)
