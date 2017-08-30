@@ -1,0 +1,77 @@
+﻿<Page x:Class="PoS.Views.SecurityMainView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:local="clr-namespace:PoS.Views"
+      xmlns:prism="http://prismlibrary.com/"
+      xmlns:base="clr-namespace:PoS.Ctrls"
+      prism:ViewModelLocator.AutoWireViewModel="True"
+      mc:Ignorable="d" 
+      Title="SecurityMainView">
+    <Page.Resources>
+        <DataTemplate x:Key="HamburgerMenuItem" DataType="{x:Type base:HamburgerMenuIconItem}">
+            <Grid Height="48">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="48" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <ContentControl Grid.Column="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Foreground="White"
+                                    Focusable="False"
+                                    Content="{Binding Icon}" />
+                <TextBlock Grid.Column="1"
+                           VerticalAlignment="Center"
+                           FontSize="16"
+                           Foreground="White"
+                           Text="{Binding Label}" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="HamburgerMenuImageItem" DataType="{x:Type base:HamburgerMenuIconItem}">
+            <Grid Height="48">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="48" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <ContentControl Grid.Column="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Foreground="White"
+                                    Focusable="False"
+                                    Content="{Binding Icon}" />
+                <Label Grid.Column="1"
+                           VerticalAlignment="Center"
+                           FontSize="16"
+                           Foreground="White"
+                           Content="{Binding Label}" />
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+    <Grid>
+        <mah:HamburgerMenu x:Name="HamburgerMenuControl"
+                                SelectedIndex="0"
+                                Foreground="White"
+                                HamburgerWidth="50"
+                                Content="{Binding RelativeSource={RelativeSource Self}, Mode=OneWay, Path=SelectedItem}"
+                                ItemTemplate="{StaticResource HamburgerMenuImageItem}"
+                                PaneBackground="#FF444444"
+                                DisplayMode="CompactOverlay"
+								ItemsSource="{Binding Menu}">
+
+            <!--  Content  -->
+            <mah:HamburgerMenu.ContentTemplate>
+                <DataTemplate>
+                    <mah:TransitioningContentControl Content="{Binding Tag}"
+                                                          RestartTransitionOnContentChange="True"
+                                                          Transition="Default">
+                    </mah:TransitioningContentControl>
+                </DataTemplate>
+            </mah:HamburgerMenu.ContentTemplate>
+        </mah:HamburgerMenu>
+    </Grid>
+</Page>
