@@ -3,6 +3,7 @@ using PoS.Ctrls;
 using PoS.Dal.Mdl;
 using PoS.Events;
 using Prism.Commands;
+using Prism.Regions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,10 +62,14 @@ namespace PoS.ViewModels
 
 		public void LogoutCommand ()
 		{
+			IRegion mainRegion = RegionManager.Regions["MainRegion"];
 			User usermodel = new User();
 			Container.RegisterInstance (usermodel);
 			TileCommand.RaiseCanExecuteChanged ();
 			SetCommand.RaiseCanExecuteChanged ();
+
+			mainRegion.RemoveAll ();
+
 			RegionManager.RequestNavigate("MainRegion", "HomeTilesView");
 		}
 

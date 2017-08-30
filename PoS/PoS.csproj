@@ -123,12 +123,14 @@
     <Compile Include="Ctrls\PoSTile.cs" />
     <Compile Include="Events\PoSEvents.cs" />
     <Compile Include="Helper\PasswordHelper.cs" />
+    <Compile Include="Module\MainModule.cs" />
     <Compile Include="ViewModels\HomeCommandViewModel.cs" />
     <Compile Include="ViewModels\HomeTilesViewModel.cs" />
     <Compile Include="ViewModels\InventoryDataViewModel.cs" />
     <Compile Include="ViewModels\InventoryMainViewModel.cs" />
     <Compile Include="ViewModels\LoginCommandViewModel.cs" />
     <Compile Include="ViewModels\LoginFlyOutViewModel.cs" />
+    <Compile Include="ViewModels\SecurityMainViewModel.cs" />
     <Compile Include="ViewModels\UserInfoFlyoutViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\HomeCommandView.xaml.cs">
@@ -148,6 +150,9 @@
     </Compile>
     <Compile Include="Views\LoginFlyOutView.xaml.cs">
       <DependentUpon>LoginFlyOutView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SecurityMainView.xaml.cs">
+      <DependentUpon>SecurityMainView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserInfoFlyoutView.xaml.cs">
       <DependentUpon>UserInfoFlyoutView.xaml</DependentUpon>
@@ -201,6 +206,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\LoginFlyOutView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SecurityMainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,7 +1,9 @@
 ﻿using Microsoft.Practices.Unity;
 using PoS.BL;
 using PoS.BL.Service;
+using PoS.Module;
 using PoS.Views;
+using Prism.Modularity;
 using Prism.Regions;
 using Prism.Unity;
 using System;
@@ -39,8 +41,6 @@ namespace PoS
 				var regionManager = this.Container.Resolve<IRegionManager>();
 
 				if (regionManager != null) {
-					regionManager.RegisterViewWithRegion ("MainRegion", typeof (HomeTilesView));
-					regionManager.RegisterViewWithRegion ("MainRegion", typeof (InventoryMainView));
 					regionManager.RegisterViewWithRegion ("LeftCommandRegion", typeof (HomeCommandView));
 					regionManager.RegisterViewWithRegion ("RightCommandRegion", typeof (LoginCommandView));
 					regionManager.RegisterViewWithRegion ("FlyoutControlRegion", typeof (LoginFlyOutView));
@@ -54,6 +54,15 @@ namespace PoS
 			}
 
 			mutex.ReleaseMutex ();
+		}
+
+		protected override void ConfigureModuleCatalog ()
+		{
+			base.ConfigureModuleCatalog ();
+
+			ModuleCatalog module = (ModuleCatalog)this.ModuleCatalog;
+
+			module.AddModule (typeof (MainModule));
 		}
 
 		protected override void ConfigureContainer()
