@@ -1,5 +1,6 @@
 ﻿using PoS.BL.Models;
 using PoS.Dal.Mdl;
+using Prism.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -73,31 +74,32 @@ namespace PoS.ViewModels
 				NotifyPropertyChanged("ProductList");
 			}
 		}
+
+		public DelegateCommand AddCommand
+		{
+			get;
+			private set;
+		}
+
+		public DelegateCommand EditCommand
+		{
+			get;
+			private set;
+		}
+
+		public DelegateCommand DeleteCommand
+		{
+			get;
+			private set;
+		}
+
 		public InventoryDataViewModel()
 		{
 			ProductList = new List<ProductModel>();
-			List<ProductModel> tmpProduct = new List<ProductModel>();
-			Random rand = new Random(2500);
-			for(int idx = 0; idx < 100; idx++)
-			{
-				ProductModel prod = new ProductModel();
-				double price = rand.NextDouble() * 1000;
-				double qty = rand.NextDouble() * 500;
-
-				prod.BarCode = (idx + 1).ToString("00000000000");
-				prod.Name = "Product No. " + (idx + 1).ToString();
-				prod.StockPrice = Math.Round(price, 2);
-				prod.RetailPrice = Math.Round(price * 1.05, 2);
-				prod.StockType = Dal.Mdl.EStockType.Qty;
-				prod.InStock = Math.Round(qty);
-
-				tmpProduct.Add(prod);
-			}
 
 			StockTypeList = Enum.GetValues(typeof(EStockType)).Cast<EStockType>().ToList();
 			SelectedStockType = EStockType.Qty;
-
-			ProductList = tmpProduct;
+			ProductList = InventoryService.GetAllProducts();
 		}
 	}
 }

@@ -90,6 +90,19 @@ namespace PoS.ViewModels
 				this.SetProperty<ISecurityService>(ref this.securityService, value);
 			}
 		}
+
+		private IInventoryService invertoryService;
+		public IInventoryService InventoryService
+		{
+			get
+			{
+				return invertoryService;
+			}
+			private set
+			{
+				this.SetProperty<IInventoryService>(ref this.invertoryService, value);
+			}
+		}
 		#endregion
 
 		#region Flyout
@@ -113,6 +126,7 @@ namespace PoS.ViewModels
 			this.RegionManager = ServiceLocator.Current.GetInstance<IRegionManager> ();
 			this.EventAggregator = ServiceLocator.Current.GetInstance<IEventAggregator> ();
 			this.SecurityService = ServiceLocator.Current.GetInstance<ISecurityService>();
+			this.InventoryService = ServiceLocator.Current.GetInstance<IInventoryService>();
 			this.Container = ServiceLocator.Current.GetInstance<IUnityContainer> ();
 			_dialog = DialogCoordinator.Instance;
 		}

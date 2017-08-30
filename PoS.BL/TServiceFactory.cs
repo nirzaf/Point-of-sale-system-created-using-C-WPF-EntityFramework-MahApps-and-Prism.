@@ -13,6 +13,7 @@ namespace PoS.BL
 		private const string ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=PoSDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 		private static PoSDbTransact mTransact;
 		private static ISecurityService mSecurityService;
+		private static IInventoryService mInventoryService;
 
 		private static IPosUnitOfWork GetUnitOfWork()
 		{
@@ -32,6 +33,15 @@ namespace PoS.BL
 			}
 
 			return mSecurityService;
+		}
+
+		public static IInventoryService GetInventoryService()
+		{
+			if (mInventoryService == null) {
+				mInventoryService = new InventoryService(GetUnitOfWork());
+			}
+
+			return mInventoryService;
 		}
 	}
 }

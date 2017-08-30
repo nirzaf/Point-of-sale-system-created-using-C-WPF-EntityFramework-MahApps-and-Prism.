@@ -155,5 +155,10 @@ namespace PoS.BL.Models
 		{
 			_model = iModel;
 		}
+
+		internal Product GetProduct()
+		{
+			return _model;
+		}
 	}
 }
