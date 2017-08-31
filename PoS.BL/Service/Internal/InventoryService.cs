@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 using PoS.BL.Models;
 using PoS.Dal.Sql.Ctx;
 using PoS.Dal.Mdl;
+using PoS.BL.Service.Base;
 
-namespace PoS.BL.Service
+namespace PoS.BL.Service.Internal
 {
-	internal class InventoryService : IInventoryService
+	internal class InventoryService : AbstractService, IInventoryService
 	{
-		IPosUnitOfWork _uofw;
 		public InventoryService(IPosUnitOfWork iUnitOfWork)
+			:base (iUnitOfWork)
 		{
-			_uofw = iUnitOfWork;
 		}
-		public void Add(string iUser, ProductModel iModel)
+		public void AddProduct(string iUser, ProductModel iModel)
 		{
 			Product product = iModel.GetProduct();
 
@@ -29,7 +29,18 @@ namespace PoS.BL.Service
 			_uofw.Commit();
 		}
 
-		public void Delete(ProductModel iModel)
+		public void UpdateProduct (string iUser, ProductModel iModel)
+		{
+			Product product = iModel.GetProduct();
+
+			product.ModifiedBy = iUser;
+			product.ModifiedDate = DateTime.Now;
+
+			_uofw.ProductRepo.Update (product);
+			_uofw.Commit ();
+		}
+
+		public void DeleteProduct(ProductModel iModel)
 		{
 			_uofw.ProductRepo.Delete(iModel.GetProduct());
 		}
@@ -52,17 +63,6 @@ namespace PoS.BL.Service
 			}
 
 			return oModel;
-		}
-
-		public void Update(string iUser, ProductModel iModel)
-		{
-			Product product = iModel.GetProduct();
-
-			product.ModifiedBy = iUser;
-			product.ModifiedDate = DateTime.Now;
-
-			_uofw.ProductRepo.Update(product);
-			_uofw.Commit();
 		}
 	}
 }

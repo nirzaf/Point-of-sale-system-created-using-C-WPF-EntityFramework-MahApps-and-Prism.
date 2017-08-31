@@ -8,8 +8,9 @@ using PoS.Dal.Sql.Ctx.Context;
 
 namespace PoS.Dal.Sql.Ctx.Transaction
 {
-	internal class PoSUnitOfWork : IPosUnitOfWork
+	internal class PoSUnitOfWork : IPosUnitOfWork, IDisposable
 	{
+		private bool _isDispose;
 		private EmployeeRepository _empRepo;
 		private UserRepository _userRepo;
 		private ProductRepository _productRepo;
@@ -78,19 +79,44 @@ namespace PoS.Dal.Sql.Ctx.Transaction
 			_orderLineRepo = new OrderLineRepository(_context);
 		}
 
-		public void Commit()
+		public int Commit()
 		{
+			int			oRetStat = 0;
 			using (var transact = _context.Database.BeginTransaction())
 			{
 				try
 				{
 					transact.Commit();
+					oRetStat = 0;
 				}
 				catch
 				{
 					transact.Rollback();
+					oRetStat = -1;
 				}
 			}
+
+			return oRetStat;
+		}
+
+		public void Dispose ()
+		{
+			Dispose (true);
+			GC.SuppressFinalize (this);
+		}
+
+		~PoSUnitOfWork ()
+		{
+			Dispose (false);
+		}
+
+		private void Dispose (bool disposing)
+		{
+			if (_isDispose) return;
+
+			if (disposing) _context.Dispose ();
+
+			_isDispose = true;
 		}
 	}
 }

@@ -6,9 +6,13 @@
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True"
              xmlns:local="clr-namespace:PoS.Views"
+             xmlns:helper="clr-namespace:PoS.Helper"
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
              mc:Ignorable="d">
+    <UserControl.Resources>
+        <helper:ByteToImageConverter x:Key="ByteToImageConverter"/>
+    </UserControl.Resources>
     <Grid ShowGridLines="True">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -74,45 +78,57 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="6"/>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="6"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="6"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="6"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="6"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="6"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="6"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="6"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="6"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="6"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="6"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="6"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="6"/>
-                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <TextBlock Style="{StaticResource Label2}" Text="Code:"/>
-                <TextBox Grid.Row="2" Margin="6,0,6,0" Text="{Binding Path=SelectedProduct.BarCode, Mode=TwoWay}" MaxLength="100" Width="300"/>
-                <TextBlock Style="{StaticResource Label2}" Text="Name:" Grid.Row="4"/>
-                <TextBox Grid.Row="6" Margin="6,0,6,0" Text="{Binding Path=SelectedProduct.Name, Mode=TwoWay}" MaxHeight="50" Width="300"/>
-                <TextBlock Style="{StaticResource Label2}" Text="Description:" Grid.Row="8"/>
-                <TextBox Grid.Row="10" Margin="6,0,6,0" Text="{Binding Path=Description, Mode=TwoWay}" AcceptsReturn="True" Height="100" MaxHeight="50" Width="300"/>
-                <TextBlock Style="{StaticResource Label2}" Text="Stock Type:" Grid.Row="12"/>
-                <ComboBox ItemsSource="{Binding Path=StockTypeList, Mode=TwoWay}" Grid.Row="14" SelectedItem="{Binding Path=SelectedStockType, Mode=TwoWay}"/>
-                <TextBlock Style="{StaticResource Label2}" Text="Qty:" Grid.Row="16"/>
-                <mah:NumericUpDown Value="{Binding Path=SelectedProduct.InStock, Mode=TwoWay, StringFormat=0.00}" Grid.Row="18"/>
-                <TextBlock Style="{StaticResource Label2}" Text="Stock Price:" Grid.Row="20"/>
-                <mah:NumericUpDown Value="{Binding Path=SelectedProduct.StockPrice, Mode=TwoWay, StringFormat=0.00}" Grid.Row="22"/>
-                <TextBlock Style="{StaticResource Label2}" Text="Retail Price:" Grid.Row="24"/>
-                <mah:NumericUpDown Value="{Binding Path=SelectedProduct.RetailPrice, Mode=TwoWay, StringFormat=0.00}" Grid.Row="26"/>
+                <Border BorderBrush="Black" BorderThickness="1"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                    <Image Width="150" Source="{Binding Path=SelectedProduct.Image, Converter={StaticResource ByteToImageConverter}}" Height="150" Stretch="Fill"/>
+                </Border>
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="6"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="6"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="6"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="6"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="6"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="6"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="6"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="6"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="6"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="6"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="6"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="6"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="6"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Style="{StaticResource Label2}" Text="Code:"/>
+                    <TextBox Grid.Row="2" Margin="6,0,6,0" Text="{Binding Path=SelectedProduct.BarCode, Mode=TwoWay}" MaxLength="100" Width="300"/>
+                    <TextBlock Style="{StaticResource Label2}" Text="Name:" Grid.Row="4"/>
+                    <TextBox Grid.Row="6" Margin="6,0,6,0" Text="{Binding Path=SelectedProduct.Name, Mode=TwoWay}" MaxHeight="50" Width="300"/>
+                    <TextBlock Style="{StaticResource Label2}" Text="Description:" Grid.Row="8"/>
+                    <TextBox Grid.Row="10" Margin="6,0,6,0" Text="{Binding Path=Description, Mode=TwoWay}" AcceptsReturn="True" Height="100" MaxHeight="50" Width="300"/>
+                    <TextBlock Style="{StaticResource Label2}" Text="Stock Type:" Grid.Row="12"/>
+                    <ComboBox ItemsSource="{Binding Path=StockTypeList, Mode=TwoWay}" Grid.Row="14" SelectedItem="{Binding Path=SelectedStockType, Mode=TwoWay}"/>
+                    <TextBlock Style="{StaticResource Label2}" Text="Qty:" Grid.Row="16"/>
+                    <mah:NumericUpDown Value="{Binding Path=SelectedProduct.InStock, Mode=TwoWay, StringFormat=0.00}" Grid.Row="18"/>
+                    <TextBlock Style="{StaticResource Label2}" Text="Stock Price:" Grid.Row="20"/>
+                    <mah:NumericUpDown Value="{Binding Path=SelectedProduct.StockPrice, Mode=TwoWay, StringFormat=0.00}" Grid.Row="22"/>
+                    <TextBlock Style="{StaticResource Label2}" Text="Retail Price:" Grid.Row="24"/>
+                    <mah:NumericUpDown Value="{Binding Path=SelectedProduct.RetailPrice, Mode=TwoWay, StringFormat=0.00}" Grid.Row="26"/>
+                </Grid>
             </Grid>
         </GroupBox>
     </Grid>

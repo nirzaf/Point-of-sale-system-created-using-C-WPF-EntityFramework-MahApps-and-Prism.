@@ -122,6 +122,7 @@
     <Compile Include="Ctrls\HamburgerMenuIconItem.cs" />
     <Compile Include="Ctrls\PoSTile.cs" />
     <Compile Include="Events\PoSEvents.cs" />
+    <Compile Include="Helper\ByteToImageConverter.cs" />
     <Compile Include="Helper\PasswordHelper.cs" />
     <Compile Include="Module\MainModule.cs" />
     <Compile Include="ViewModels\HomeCommandViewModel.cs" />

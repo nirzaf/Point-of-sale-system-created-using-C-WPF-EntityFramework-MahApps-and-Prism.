@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PoS.Events
 {
-	public class UserSecurityEvent : PubSubEvent<User>
+	public class UserLoginEvent : PubSubEvent<User>
 	{
 	}
 

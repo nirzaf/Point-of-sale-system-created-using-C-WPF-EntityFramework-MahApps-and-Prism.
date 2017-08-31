@@ -60,11 +60,12 @@
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\Base\AbstractService.cs" />
     <Compile Include="Service\IInventoryService.cs" />
     <Compile Include="Service\IModelBase.cs" />
-    <Compile Include="Service\InventoryService.cs" />
+    <Compile Include="Service\Internal\InventoryService.cs" />
     <Compile Include="Service\ISecurityService.cs" />
-    <Compile Include="Service\SecurityService.cs" />
+    <Compile Include="Service\Internal\SecurityService.cs" />
     <Compile Include="TServiceFactory.cs" />
   </ItemGroup>
   <ItemGroup>

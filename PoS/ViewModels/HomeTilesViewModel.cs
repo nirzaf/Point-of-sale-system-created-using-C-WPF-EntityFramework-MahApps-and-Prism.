@@ -29,7 +29,7 @@ namespace PoS.ViewModels
 		{
 			TileCommand = new DelegateCommand<string> (Execute, CanExecute).ObservesProperty (() => IsEnabled);
 			SetCommand = new DelegateCommand<PoSTile> (ExecuteTile, CanTileExecute).ObservesProperty (() => IsEnabled);
-			EventAggregator.GetEvent<UserSecurityEvent> ().Subscribe (LoginCommand, true);
+			EventAggregator.GetEvent<UserLoginEvent> ().Subscribe (LoginCommand, true);
 			EventAggregator.GetEvent<UserLogoutEvent> ().Subscribe (LogoutCommand, true);
 		}
 

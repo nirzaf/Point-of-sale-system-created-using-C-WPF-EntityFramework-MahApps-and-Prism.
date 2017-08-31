@@ -1,4 +1,5 @@
 ﻿using PoS.BL.Service;
+using PoS.BL.Service.Internal;
 using PoS.Dal.Sql.Ctx;
 using System;
 using System.Collections.Generic;

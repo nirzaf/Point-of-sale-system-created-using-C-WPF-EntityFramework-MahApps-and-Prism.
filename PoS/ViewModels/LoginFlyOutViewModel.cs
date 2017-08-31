@@ -92,7 +92,7 @@ namespace PoS.ViewModels
 				ShowMessage ("Incorrect Username / password");
 			}
 			else {
-				EventAggregator.GetEvent<UserSecurityEvent> ().Publish (user);
+				EventAggregator.GetEvent<UserLoginEvent> ().Publish (user);
 				IsOpenFlyout = false;
 				UserName = string.Empty;
 				Password = string.Empty;

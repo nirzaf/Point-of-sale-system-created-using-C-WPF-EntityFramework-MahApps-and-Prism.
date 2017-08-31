@@ -1,4 +1,5 @@
-﻿using PoS.Dal.Mdl;
+﻿using PoS.BL.Service.Base;
+using PoS.Dal.Mdl;
 using PoS.Dal.Sql.Ctx;
 using System;
 using System.Collections.Generic;
@@ -6,14 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PoS.BL.Service
+namespace PoS.BL.Service.Internal
 {
-	internal class SecurityService: ISecurityService
+	internal class SecurityService: AbstractService, ISecurityService
 	{
-		private IPosUnitOfWork _uofw;
 		internal SecurityService(IPosUnitOfWork unitofwork)
+			: base (unitofwork)
 		{
-			_uofw = unitofwork;
 		}
 
 		public List<User> GetAllUsers()

@@ -53,7 +53,7 @@ namespace PoS.ViewModels
 
 		public UserInfoFlyoutViewModel ()
 		{
-			EventAggregator.GetEvent<UserSecurityEvent> ().Subscribe (LoginUser);
+			EventAggregator.GetEvent<UserLoginEvent> ().Subscribe (LoginUser);
 			LogoutCommand = new DelegateCommand (Logout);
 		}
 

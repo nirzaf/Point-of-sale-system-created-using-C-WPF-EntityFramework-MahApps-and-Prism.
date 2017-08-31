@@ -15,6 +15,6 @@ namespace PoS.Dal.Sql.Ctx
 		OrderRepository OrderRepo { get; }
 		OrderLineRepository OrderLineRepo { get; }
 
-		void Commit();
+		int Commit();
 	}
 }

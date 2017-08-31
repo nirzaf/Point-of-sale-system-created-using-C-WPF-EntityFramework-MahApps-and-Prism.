@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PoS.BL.Service
 {
-	public interface IInventoryService: IModelBase<ProductModel>
+	public interface IInventoryService
 	{
 		List<ProductModel> GetAllProducts();
 		ProductModel GetProductByBarCode(string iCode);

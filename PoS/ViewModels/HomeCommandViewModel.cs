@@ -40,7 +40,7 @@ namespace PoS.ViewModels
 		{
 			_region = RegionManager.Regions["MainRegion"];
 			HomeCommand = new DelegateCommand (GoBack, CanGoHome).ObservesProperty (() => IsEnable);
-			EventAggregator.GetEvent<UserSecurityEvent> ().Subscribe (OnLoginCommand, true);
+			EventAggregator.GetEvent<UserLoginEvent> ().Subscribe (OnLoginCommand, true);
 			EventAggregator.GetEvent<UserLogoutEvent> ().Subscribe (OnLogoutCommand, true);
 		}
 		#endregion
