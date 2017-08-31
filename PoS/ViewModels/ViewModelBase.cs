@@ -90,19 +90,6 @@ namespace PoS.ViewModels
 				this.SetProperty<ISecurityService>(ref this.securityService, value);
 			}
 		}
-
-		private IInventoryService invertoryService;
-		public IInventoryService InventoryService
-		{
-			get
-			{
-				return invertoryService;
-			}
-			private set
-			{
-				this.SetProperty<IInventoryService>(ref this.invertoryService, value);
-			}
-		}
 		#endregion
 
 		#region Flyout
@@ -126,7 +113,6 @@ namespace PoS.ViewModels
 			this.RegionManager = ServiceLocator.Current.GetInstance<IRegionManager> ();
 			this.EventAggregator = ServiceLocator.Current.GetInstance<IEventAggregator> ();
 			this.SecurityService = ServiceLocator.Current.GetInstance<ISecurityService>();
-			this.InventoryService = ServiceLocator.Current.GetInstance<IInventoryService>();
 			this.Container = ServiceLocator.Current.GetInstance<IUnityContainer> ();
 			_dialog = DialogCoordinator.Instance;
 		}
@@ -137,6 +123,11 @@ namespace PoS.ViewModels
 		protected async void ShowMessage (string iMessage)
 		{
 			await ((MetroWindow)Container.Resolve<Window> ("MainShell")).ShowMessageAsync ("PoS", iMessage);
+		}
+
+		protected async void ShowMessage (string iMessage, MessageDialogStyle style = MessageDialogStyle.Affirmative)
+		{
+			await ((MetroWindow)Container.Resolve<Window> ("MainShell")).ShowMessageAsync ("PoS", iMessage, style);
 		}
 
 		protected bool IsLogin (out User oUserModel)

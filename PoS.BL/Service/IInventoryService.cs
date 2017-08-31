@@ -11,5 +11,10 @@ namespace PoS.BL.Service
 	{
 		List<ProductModel> GetAllProducts();
 		ProductModel GetProductByBarCode(string iCode);
+
+		void UpdateProduct (ProductModel iProduct);
+		void AddProduct (ProductModel iProduct);
+
+		void DeleteProduct (ProductModel iProduct);
 	}
 }

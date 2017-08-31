@@ -12,28 +12,29 @@ namespace PoS.BL.Service.Internal
 {
 	internal class InventoryService : AbstractService, IInventoryService
 	{
-		public InventoryService(IPosUnitOfWork iUnitOfWork)
+		private string _userName;
+		public InventoryService(IPosUnitOfWork iUnitOfWork, string iLoginName)
 			:base (iUnitOfWork)
 		{
 		}
-		public void AddProduct(string iUser, ProductModel iModel)
+		public void AddProduct(ProductModel iModel)
 		{
 			Product product = iModel.GetProduct();
 
-			product.CreatedBy = iUser;
+			product.CreatedBy = _userName;
 			product.CreatedDate = DateTime.Now;
-			product.ModifiedBy = iUser;
+			product.ModifiedBy = _userName;
 			product.ModifiedDate = DateTime.Now;
 
 			_uofw.ProductRepo.Add(product);
 			_uofw.Commit();
 		}
 
-		public void UpdateProduct (string iUser, ProductModel iModel)
+		public void UpdateProduct (ProductModel iModel)
 		{
 			Product product = iModel.GetProduct();
 
-			product.ModifiedBy = iUser;
+			product.ModifiedBy = _userName;
 			product.ModifiedDate = DateTime.Now;
 
 			_uofw.ProductRepo.Update (product);
@@ -43,6 +44,7 @@ namespace PoS.BL.Service.Internal
 		public void DeleteProduct(ProductModel iModel)
 		{
 			_uofw.ProductRepo.Delete(iModel.GetProduct());
+			_uofw.Commit ();
 		}
 
 		public List<ProductModel> GetAllProducts()

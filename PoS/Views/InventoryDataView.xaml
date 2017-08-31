@@ -13,13 +13,13 @@
     <UserControl.Resources>
         <helper:ByteToImageConverter x:Key="ByteToImageConverter"/>
     </UserControl.Resources>
-    <Grid ShowGridLines="True">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="3"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <GroupBox Header="Product List" HorizontalAlignment="Stretch">
+        <GroupBox Header="Product List" IsEnabled="{Binding IsNormalMode}" HorizontalAlignment="Stretch">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -27,7 +27,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                    <Button Foreground="White" Background="Blue" Width="40" Height="40" Style="{DynamicResource MetroCircleButtonStyle}" ToolTip="Add">
+                    <Button Foreground="White" Command="{Binding AddCommand}" Background="Blue" Width="40" Height="40" Style="{DynamicResource MetroCircleButtonStyle}" ToolTip="Add">
                         <StackPanel Orientation="Horizontal">
                             <Rectangle Width="20" Height="20"
                        Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
@@ -38,7 +38,7 @@
                             </Rectangle>
                         </StackPanel>
                     </Button>
-                    <Button Foreground="White" Background="Green" ToolTip="Edit" Width="40" Height="40" Style="{DynamicResource MetroCircleButtonStyle}">
+                    <Button Command="{Binding EditCommand}" Foreground="White" Background="LightBlue" ToolTip="Edit" Width="40" Height="40" Style="{DynamicResource MetroCircleButtonStyle}">
                         <StackPanel Orientation="Horizontal">
                             <Rectangle Width="20" Height="20"
                        Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
@@ -49,13 +49,24 @@
                             </Rectangle>
                         </StackPanel>
                     </Button>
-                    <Button Foreground="White" Background="Red" Width="40" Height="40" Style="{DynamicResource MetroCircleButtonStyle}" ToolTip="Delete">
+                    <Button Command="{Binding CancelCommand}" Foreground="White" Background="Red" Width="40" Height="40" Style="{DynamicResource MetroCircleButtonStyle}" ToolTip="Delete">
                         <StackPanel Orientation="Horizontal">
                             <Rectangle Width="20" Height="20"
                        Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
                                 <Rectangle.OpacityMask>
                                     <VisualBrush Stretch="Fill"
                                  Visual="{icon:PackIconEntypo Kind=Cross}" />
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+                        </StackPanel>
+                    </Button>
+                    <Button Command="{Binding RefreshCommand}" Foreground="White" Background="Green" Width="40" Height="40" Style="{DynamicResource MetroCircleButtonStyle}" ToolTip="Delete">
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle Width="20" Height="20"
+                       Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                                <Rectangle.OpacityMask>
+                                    <VisualBrush Stretch="Fill"
+                                 Visual="{icon:PackIconModern Kind=Refresh}" />
                                 </Rectangle.OpacityMask>
                             </Rectangle>
                         </StackPanel>
@@ -72,7 +83,23 @@
                 </DataGrid>
             </Grid>
         </GroupBox>
-        <GroupBox Header="Product Information" Grid.Column="2" HorizontalAlignment="Left">
+        <GroupBox Grid.Column="2" IsEnabled="{Binding IsAddEditMode}" HorizontalAlignment="Left">
+            <GroupBox.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock HorizontalAlignment="Left" Text="PRODUCT INFORMATION" VerticalAlignment="Center" Foreground="White"/>
+                    <Button ToolTip="Cancel" Grid.Column="1" HorizontalAlignment="Right" Command="{Binding CancelCommand}" Style="{DynamicResource HeaderButton}" IsEnabled="{Binding IsEnabledSaveButton}">
+                        <icon:PackIconModern Kind="Cancel" />
+                    </Button>
+                    <Button ToolTip="Save" Grid.Column="2" HorizontalAlignment="Right" Command="{Binding SaveCommand}" Style="{DynamicResource HeaderButton}" IsEnabled="{Binding IsEnabledSaveButton}">
+                        <icon:PackIconModern Kind="Save" />
+                    </Button>
+                </Grid>
+            </GroupBox.Header>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -81,10 +108,10 @@
                 </Grid.RowDefinitions>
                 <Border BorderBrush="Black" BorderThickness="1"
                         HorizontalAlignment="Center"
-                        VerticalAlignment="Center">
+                        VerticalAlignment="Center" Margin="80,0,59.834,0">
                     <Image Width="150" Source="{Binding Path=SelectedProduct.Image, Converter={StaticResource ByteToImageConverter}}" Height="150" Stretch="Fill"/>
                 </Border>
-                <Grid Grid.Row="2">
+                <Grid Grid.Row="2" Grid.ColumnSpan="2">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="6"/>

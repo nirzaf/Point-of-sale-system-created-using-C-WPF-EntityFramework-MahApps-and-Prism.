@@ -1,4 +1,6 @@
-﻿using PoS.BL.Models;
+﻿using PoS.BL;
+using PoS.BL.Models;
+using PoS.BL.Service;
 using PoS.Dal.Mdl;
 using Prism.Commands;
 using System;
@@ -15,6 +17,8 @@ namespace PoS.ViewModels
 		private ProductModel _selectedProduct;
 		private List<EStockType> _stockTypeList;
 		private EStockType _selectedStockType;
+		private bool _isAddEditMode;
+		private IInventoryService _inventoryService;
 
 		public ProductModel SelectedProduct
 		{
@@ -26,10 +30,10 @@ namespace PoS.ViewModels
 			{
 				if (value != null)
 				{
-					_selectedProduct = value;
-					SelectedStockType = _selectedProduct.StockType;
+					SelectedStockType = value.StockType;
 				}
-				NotifyPropertyChanged("SelectedProduct");
+				_selectedProduct = value;
+				NotifyPropertyChanged ("SelectedProduct");
 			}
 		}
 
@@ -75,6 +79,29 @@ namespace PoS.ViewModels
 			}
 		}
 
+		public bool IsAddEditMode
+		{
+			get
+			{
+				return _isAddEditMode;
+			}
+
+			private set
+			{
+				_isAddEditMode = value;
+				NotifyPropertyChanged ("IsAddEditMode");
+				NotifyPropertyChanged ("IsNormalMode");
+			}
+		}
+
+		public bool IsNormalMode
+		{
+			get
+			{
+				return !_isAddEditMode;
+			}
+		}
+
 		public DelegateCommand AddCommand
 		{
 			get;
@@ -93,13 +120,109 @@ namespace PoS.ViewModels
 			private set;
 		}
 
+		public DelegateCommand SaveCommand
+		{
+			get;
+			private set;
+		}
+
+		public DelegateCommand CancelCommand
+		{
+			get;
+			private set;
+		}
+
+		public DelegateCommand RefreshCommand
+		{
+			get;
+			private set;
+		}
+
 		public InventoryDataViewModel()
 		{
+			User userModel = new User();
 			ProductList = new List<ProductModel>();
-
+			IsAddEditMode = false;
 			StockTypeList = Enum.GetValues(typeof(EStockType)).Cast<EStockType>().ToList();
 			SelectedStockType = EStockType.Qty;
-			ProductList = InventoryService.GetAllProducts();
+
+			IsLogin (out userModel);
+
+			_inventoryService = TServiceFactory.GetInventoryService (userModel.UserName);
+
+			ProductList = _inventoryService.GetAllProducts();
+
+			AddCommand = new DelegateCommand (Add);
+			EditCommand = new DelegateCommand (Edit);
+			DeleteCommand = new DelegateCommand (Delete);
+			SaveCommand = new DelegateCommand (Save);
+			CancelCommand = new DelegateCommand (Cancel);
+			RefreshCommand = new DelegateCommand (Refresh);
 		}
+
+		#region View Events
+		private void Add ()
+		{
+			IsAddEditMode = true;
+			SelectedProduct = null;
+			SelectedProduct = new ProductModel ();
+		}
+
+		private void Edit ()
+		{
+			if (SelectedProduct == null) {
+				ShowMessage ("Please select a Product!");
+				return;
+			}
+			IsAddEditMode = true;
+		}
+
+		private void Delete ()
+		{
+
+		}
+
+		private void Save ()
+		{
+			// TODO: Checking and validations
+
+			try {
+
+				if (SelectedProduct.ProductId != 0) {
+					_inventoryService.UpdateProduct (SelectedProduct);
+				}
+				else {
+					_inventoryService.AddProduct (SelectedProduct);
+				}
+				ShowMessage ("Successfully Save Product!",
+							 MahApps.Metro.Controls.Dialogs.MessageDialogStyle.Affirmative);
+				IsAddEditMode = false;
+				Initialize ();
+			}
+			catch {
+				ShowMessage ("Error in saving Product!");
+			}
+		}
+
+		private void Cancel ()
+		{
+			IsAddEditMode = false;
+			Initialize ();
+		}
+
+		private void Refresh ()
+		{
+			Initialize ();
+		}
+		#endregion
+
+		#region Helper Methods
+		private void Initialize ()
+		{
+			ProductList = new List<ProductModel> ();
+			ProductList = _inventoryService.GetAllProducts ();
+			SelectedProduct = null;
+		}
+		#endregion
 	}
 }

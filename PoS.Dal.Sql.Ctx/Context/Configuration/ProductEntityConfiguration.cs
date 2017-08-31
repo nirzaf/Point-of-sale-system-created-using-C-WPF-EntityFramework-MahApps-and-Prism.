@@ -17,6 +17,9 @@ namespace PoS.Dal.Sql.Ctx.Configuration
 				p.BarCode
 			});
 
+			Property (p => p.Id).HasColumnOrder (1);
+			Property (p => p.BarCode).HasColumnOrder (2);
+
 			Property (p => p.BarCode).HasMaxLength (100);
 			Property (p => p.Name).HasMaxLength (50);
 		}

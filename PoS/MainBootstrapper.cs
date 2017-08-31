@@ -69,8 +69,6 @@ namespace PoS
 		{
 			base.ConfigureContainer();
 			ISecurityService securityService = TServiceFactory.GetSecurityService();
-			IInventoryService inventoryService = TServiceFactory.GetInventoryService();
-			Container.RegisterInstance(inventoryService);
 			Container.RegisterInstance(securityService);
 			Container.RegisterInstance (Container);
 		}
