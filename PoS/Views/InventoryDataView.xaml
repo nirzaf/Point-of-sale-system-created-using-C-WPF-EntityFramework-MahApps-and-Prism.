@@ -146,7 +146,7 @@
                     <TextBlock Style="{StaticResource Label2}" Text="Name:" Grid.Row="4"/>
                     <TextBox Grid.Row="6" Margin="6,0,6,0" Text="{Binding Path=SelectedProduct.Name, Mode=TwoWay}" MaxHeight="50" Width="300"/>
                     <TextBlock Style="{StaticResource Label2}" Text="Description:" Grid.Row="8"/>
-                    <TextBox Grid.Row="10" Margin="6,0,6,0" Text="{Binding Path=Description, Mode=TwoWay}" AcceptsReturn="True" Height="100" MaxHeight="50" Width="300"/>
+                    <TextBox Grid.Row="10" Margin="6,0,6,0" Text="{Binding Path=SelectedProduct.Description, Mode=TwoWay}" AcceptsReturn="True" Height="100" MaxHeight="50" Width="300"/>
                     <TextBlock Style="{StaticResource Label2}" Text="Stock Type:" Grid.Row="12"/>
                     <ComboBox ItemsSource="{Binding Path=StockTypeList, Mode=TwoWay}" Grid.Row="14" SelectedItem="{Binding Path=SelectedStockType, Mode=TwoWay}"/>
                     <TextBlock Style="{StaticResource Label2}" Text="Qty:" Grid.Row="16"/>

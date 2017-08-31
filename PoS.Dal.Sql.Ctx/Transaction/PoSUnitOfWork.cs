@@ -82,19 +82,7 @@ namespace PoS.Dal.Sql.Ctx.Transaction
 		public int Commit()
 		{
 			int			oRetStat = 0;
-			using (var transact = _context.Database.BeginTransaction())
-			{
-				try
-				{
-					transact.Commit();
-					oRetStat = 0;
-				}
-				catch
-				{
-					transact.Rollback();
-					oRetStat = -1;
-				}
-			}
+			_context.SaveChanges();
 
 			return oRetStat;
 		}

@@ -1,6 +1,8 @@
 ﻿using PoS.Dal.Mdl;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Infrastructure.Annotations;
 using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Text;
@@ -12,12 +14,12 @@ namespace PoS.Dal.Sql.Ctx.Configuration
 	{
 		public UserEntityConfiguration ()
 		{
-			HasKey (u => new {
-				u.Id,
-				u.UserName
-			});
+			HasKey (u => u.Id);
 
-			Property (p => p.UserName).HasMaxLength (30);
+			Property(p => p.UserName).HasMaxLength(15).HasColumnAnnotation("Index",
+							new IndexAnnotation
+							(new IndexAttribute("IDX_UQ_USERNAME")
+							{ IsUnique = true }));
 			Property (p => p.LName).HasMaxLength (30);
 			Property (p => p.MName).HasMaxLength (30);
 			Property (p => p.Password).HasMaxLength (15);

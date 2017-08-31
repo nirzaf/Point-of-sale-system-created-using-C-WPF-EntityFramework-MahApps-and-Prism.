@@ -16,6 +16,7 @@ namespace PoS.BL.Service.Internal
 		public InventoryService(IPosUnitOfWork iUnitOfWork, string iLoginName)
 			:base (iUnitOfWork)
 		{
+			_userName = iLoginName;
 		}
 		public void AddProduct(ProductModel iModel)
 		{

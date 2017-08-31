@@ -29,6 +29,7 @@ namespace PoS.Dal.Sql.Ctx.Repository
 				throw new ArgumentNullException ("entity", message: "entity must not be null!");
 
 			_dbSet.Add (entity);
+			EntityState state = _context.Entry(entity).State;
 		}
 
 		public virtual void Delete (J entity)
