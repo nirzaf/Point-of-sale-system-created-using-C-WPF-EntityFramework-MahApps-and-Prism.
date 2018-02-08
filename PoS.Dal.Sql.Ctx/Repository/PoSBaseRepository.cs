@@ -10,10 +10,10 @@ namespace PoS.Dal.Sql.Ctx.Repository
 {
 	public abstract class PoSBaseRepository<J> where J : class, IModel, new ()
 	{
-		protected DbContext _context;
-		protected DbSet<J> _dbSet;
+		protected IPoSContext _context;
+		protected IDbSet<J> _dbSet;
 
-		public PoSBaseRepository (DbContext context)
+		public PoSBaseRepository (IPoSContext context)
 		{
 			if (context == null) {
 				throw new ArgumentNullException ("context", message: "context must not be null!");

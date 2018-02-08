@@ -10,7 +10,7 @@ namespace PoS.Dal.Sql.Ctx.Repository
 {
 	public class EmployeeRepository : PoSBaseRepository<Employee>
 	{
-		public EmployeeRepository (DbContext context) 
+		public EmployeeRepository (IPoSContext context) 
 			: base (context)
 		{
 

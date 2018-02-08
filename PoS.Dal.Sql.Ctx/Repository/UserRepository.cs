@@ -10,7 +10,7 @@ namespace PoS.Dal.Sql.Ctx.Repository
 {
 	public class UserRepository : PoSBaseRepository<User>
 	{
-		public UserRepository (DbContext iContext)
+		public UserRepository (IPoSContext iContext)
 			: base (iContext)
 		{
 

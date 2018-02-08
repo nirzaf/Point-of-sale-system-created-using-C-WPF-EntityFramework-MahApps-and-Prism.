@@ -31,7 +31,7 @@ namespace PoS.Dal.Sql.Ctx
 
 		public PoSDbTransact(string connstring)
 		{
-			_context = new PoSContext(connstring);
+			_context = new PoSContext();
 			_unitofwork = new PoSUnitOfWork(_context);
 		}
 	}

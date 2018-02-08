@@ -11,7 +11,7 @@ namespace PoS.BL.Service.Internal
 {
 	internal class SecurityService: AbstractService, ISecurityService
 	{
-		internal SecurityService(IPosUnitOfWork unitofwork)
+		public SecurityService(IPosUnitOfWork unitofwork)
 			: base (unitofwork)
 		{
 		}

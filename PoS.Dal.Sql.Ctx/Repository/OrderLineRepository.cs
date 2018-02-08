@@ -10,7 +10,7 @@ namespace PoS.Dal.Sql.Ctx.Repository
 {
 	public class OrderLineRepository : PoSBaseRepository<OrderLine>
 	{
-		public OrderLineRepository(DbContext context)
+		public OrderLineRepository(IPoSContext context)
 			: base(context)
 		{
 		}

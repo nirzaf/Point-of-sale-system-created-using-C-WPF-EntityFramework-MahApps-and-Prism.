@@ -1,5 +1,6 @@
 ﻿using MySql.Data.Entity;
 using PoS.Dal.Mdl;
+using PoS.Dal.Sql.Ctx.Interface;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -11,8 +12,7 @@ using System.Threading.Tasks;
 
 namespace PoS.Dal.Sql.Ctx.Context
 {
-	[DbConfigurationType (typeof (MySqlEFConfiguration))]
-	internal class PoSContext : DbContext, IPoSContext
+	public class PoSContext : DbContext, IPoSContext
 	{
 		public DbSet<User> Users { get; set; }
 
@@ -24,8 +24,8 @@ namespace PoS.Dal.Sql.Ctx.Context
 
 		public DbSet<Product> Products { get; set; }
 
-		internal PoSContext(string connstring)
-			: base (connstring)
+		public PoSContext()
+			:base("PosDbConn")
 		{
 			Database.SetInitializer(new PoSCreateNotExist ());
 		}
@@ -71,6 +71,16 @@ namespace PoS.Dal.Sql.Ctx.Context
 							   typeof(EntityTypeConfiguration<>));
 
 			return entityConfig;
+		}
+
+		public new IDbSet<T> Set<T>() where T : class
+		{
+			return base.Set<T>();
+		}
+
+		public int CommitChanges()
+		{
+			return this.SaveChanges();
 		}
 	}
 }

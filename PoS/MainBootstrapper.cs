@@ -68,8 +68,7 @@ namespace PoS
 		protected override void ConfigureContainer()
 		{
 			base.ConfigureContainer();
-			ISecurityService securityService = TServiceFactory.GetSecurityService();
-			Container.RegisterInstance(securityService);
+			UnitRegistrationBL.Setup(Container);
 			Container.RegisterInstance (Container);
 		}
 	}

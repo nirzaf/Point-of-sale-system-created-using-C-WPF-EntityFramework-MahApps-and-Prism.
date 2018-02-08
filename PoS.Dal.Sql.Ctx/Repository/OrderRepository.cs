@@ -10,7 +10,7 @@ namespace PoS.Dal.Sql.Ctx.Repository
 {
 	public class OrderRepository : PoSBaseRepository<Order>
 	{
-		public OrderRepository(DbContext context) 
+		public OrderRepository(IPoSContext context) 
 			: base(context)
 		{
 

@@ -17,7 +17,7 @@ namespace PoS.Dal.Sql.Ctx.Transaction
 		private OrderRepository _orderRepo;
 		private OrderLineRepository _orderLineRepo;
 
-		private PoSContext _context;
+		private IPoSContext _context;
 
 		public EmployeeRepository EmployeeRepo
 		{
@@ -59,17 +59,7 @@ namespace PoS.Dal.Sql.Ctx.Transaction
 			}
 		}
 
-		internal PoSUnitOfWork(string connString)
-		{
-			_context = new PoSContext(connString);
-			_empRepo = new EmployeeRepository(_context);
-			_userRepo = new UserRepository(_context);
-			_productRepo = new ProductRepository(_context);
-			_orderRepo = new OrderRepository(_context);
-			_orderLineRepo = new OrderLineRepository(_context);
-		}
-
-		internal PoSUnitOfWork(PoSContext context)
+		public PoSUnitOfWork(IPoSContext context)
 		{
 			_context = context;
 			_empRepo = new EmployeeRepository(_context);
@@ -82,7 +72,7 @@ namespace PoS.Dal.Sql.Ctx.Transaction
 		public int Commit()
 		{
 			int			oRetStat = 0;
-			_context.SaveChanges();
+			_context.CommitChanges();
 
 			return oRetStat;
 		}
