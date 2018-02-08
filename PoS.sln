@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoS", "PoS\PoS.csproj", "{587B1F27-ACD3-4A3E-A8BB-696ED7533E16}"
 EndProject
@@ -14,6 +14,16 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDb", "TestDb\TestDb.csproj", "{AE8A47E6-F3A1-45D8-A832-5843FD69BAD8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoS.BL", "PoS.BL\PoS.BL.csproj", "{2B5DEF1A-D5B5-436D-AD8D-60F118076D56}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{1AB218BC-13F1-43AE-9F8E-E2708E10E8D7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business Logic", "Business Logic", "{56A89AA2-0063-4F15-AD41-EAEE4DE4321E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{10B1BFBB-A3BE-4131-AAB7-390010A28F84}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{F0C5F860-C922-43D5-81CB-353348B354E9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Prototype", "Prototype", "{3BB3FA80-6209-4E0C-9589-20C9D197D558}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,5 +58,16 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{587B1F27-ACD3-4A3E-A8BB-696ED7533E16} = {1AB218BC-13F1-43AE-9F8E-E2708E10E8D7}
+		{6B73DAB5-AEC7-49CE-9EA1-03CA2B2C2C18} = {F0C5F860-C922-43D5-81CB-353348B354E9}
+		{B6041F6B-730C-46DF-920D-DDF29D0E51FF} = {10B1BFBB-A3BE-4131-AAB7-390010A28F84}
+		{94A49DB1-6820-4A29-9C96-5C5FD8E3D63C} = {10B1BFBB-A3BE-4131-AAB7-390010A28F84}
+		{AE8A47E6-F3A1-45D8-A832-5843FD69BAD8} = {3BB3FA80-6209-4E0C-9589-20C9D197D558}
+		{2B5DEF1A-D5B5-436D-AD8D-60F118076D56} = {56A89AA2-0063-4F15-AD41-EAEE4DE4321E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8EEC2BDA-7CE9-48C9-BF53-76539B9EAC03}
 	EndGlobalSection
 EndGlobal
