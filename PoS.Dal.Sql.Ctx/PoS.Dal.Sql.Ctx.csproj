@@ -87,9 +87,18 @@
     <Compile Include="Context\Configuration\UserEntityConfiguration.cs" />
     <Compile Include="Context\PoSCreateNotExist.cs" />
     <Compile Include="Interface\IDataContextBase.cs" />
+    <Compile Include="Interface\Repository\IEmployeeRepository.cs" />
+    <Compile Include="Interface\Repository\IOrderLineRepository.cs" />
+    <Compile Include="Interface\Repository\IOrderRepository.cs" />
+    <Compile Include="Interface\Repository\IProductRepository.cs" />
+    <Compile Include="Interface\Repository\IUserRepository.cs" />
     <Compile Include="Migrations\201802081508209_InitialCreate.cs" />
     <Compile Include="Migrations\201802081508209_InitialCreate.Designer.cs">
       <DependentUpon>201802081508209_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802122240222_0.001.cs" />
+    <Compile Include="Migrations\201802122240222_0.001.Designer.cs">
+      <DependentUpon>201802122240222_0.001.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PoSDbTransact.cs" />
@@ -103,6 +112,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Repository\EmployeeRepository.cs" />
+    <Compile Include="Interface\Repository\IPosBaseRepository.cs" />
     <Compile Include="Repository\OrderLineRepository.cs" />
     <Compile Include="Repository\OrderRepository.cs" />
     <Compile Include="Repository\PoSBaseRepository.cs" />
@@ -124,6 +134,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201802081508209_InitialCreate.resx">
       <DependentUpon>201802081508209_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802122240222_0.001.resx">
+      <DependentUpon>201802122240222_0.001.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -8,7 +8,7 @@ using System.Data.Entity;
 
 namespace PoS.Dal.Sql.Ctx.Repository
 {
-	public class EmployeeRepository : PoSBaseRepository<Employee>
+	public class EmployeeRepository : PoSBaseRepository<Employee>, IEmployeeRepository
 	{
 		public EmployeeRepository (IPoSContext context) 
 			: base (context)
@@ -18,11 +18,7 @@ namespace PoS.Dal.Sql.Ctx.Repository
 
 		public Employee GetEmployeeByEmpCode (string code)
 		{
-			Employee oMdl = new Employee();
-
-			oMdl = _dbSet.Where (e => e.EmpCode == code).FirstOrDefault ();
-
-			return oMdl;
+			return _dbSet.FirstOrDefault(e => e.EmpCode == code);
 		}
 	}
 }

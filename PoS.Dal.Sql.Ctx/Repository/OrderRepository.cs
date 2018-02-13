@@ -8,7 +8,7 @@ using System.Data.Entity;
 
 namespace PoS.Dal.Sql.Ctx.Repository
 {
-	public class OrderRepository : PoSBaseRepository<Order>
+	public class OrderRepository : PoSBaseRepository<Order>, IOrderRepository
 	{
 		public OrderRepository(IPoSContext context) 
 			: base(context)

@@ -34,8 +34,4 @@ namespace PoS.Dal.Mdl
 		Weight,
 		Length
 	}
-
-	class CmnDefinition
-	{
-	}
 }

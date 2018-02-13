@@ -9,11 +9,11 @@ namespace PoS.Dal.Sql.Ctx
 {
 	public interface IPosUnitOfWork
 	{
-		EmployeeRepository EmployeeRepo { get; }
-		UserRepository UserRepo { get; }
-		ProductRepository ProductRepo { get; }
-		OrderRepository OrderRepo { get; }
-		OrderLineRepository OrderLineRepo { get; }
+		IEmployeeRepository EmployeeRepo { get; }
+		IUserRepository UserRepo { get; }
+		IProductRepository ProductRepo { get; }
+		IOrderRepository OrderRepo { get; }
+		IOrderLineRepository OrderLineRepo { get; }
 
 		int Commit();
 	}

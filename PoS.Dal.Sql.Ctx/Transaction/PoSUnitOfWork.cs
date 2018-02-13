@@ -19,7 +19,7 @@ namespace PoS.Dal.Sql.Ctx.Transaction
 
 		private IPoSContext _context;
 
-		public EmployeeRepository EmployeeRepo
+		public IEmployeeRepository EmployeeRepo
 		{
 			get
 			{
@@ -27,7 +27,7 @@ namespace PoS.Dal.Sql.Ctx.Transaction
 			}
 		}
 
-		public UserRepository UserRepo
+		public IUserRepository UserRepo
 		{
 			get
 			{
@@ -35,7 +35,7 @@ namespace PoS.Dal.Sql.Ctx.Transaction
 			}
 		}
 
-		public ProductRepository ProductRepo
+		public IProductRepository ProductRepo
 		{
 			get
 			{
@@ -43,7 +43,7 @@ namespace PoS.Dal.Sql.Ctx.Transaction
 			}
 		}
 
-		public OrderRepository OrderRepo
+		public IOrderRepository OrderRepo
 		{
 			get
 			{
@@ -51,7 +51,7 @@ namespace PoS.Dal.Sql.Ctx.Transaction
 			}
 		}
 
-		public OrderLineRepository OrderLineRepo
+		public IOrderLineRepository OrderLineRepo
 		{
 			get
 			{

@@ -40,5 +40,7 @@ namespace PoS.Dal.Mdl
 		{
 			get; set;
 		}
+
+		public virtual ICollection<Order> Orders { get; set; }
 	}
 }

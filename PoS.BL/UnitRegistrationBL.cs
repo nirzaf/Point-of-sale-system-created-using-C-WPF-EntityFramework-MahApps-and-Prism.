@@ -16,6 +16,7 @@ namespace PoS.BL
 		{
 			UnityRegistrationDbCtx.Setup(container);
 			container.RegisterType<ISecurityService, SecurityService>();
+			container.RegisterType<IInventoryService, InventoryService>();
 		}
 	}
 }

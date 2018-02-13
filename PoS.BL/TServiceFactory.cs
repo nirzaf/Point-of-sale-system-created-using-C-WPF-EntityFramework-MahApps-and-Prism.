@@ -38,9 +38,6 @@ namespace PoS.BL
 
 		public static IInventoryService GetInventoryService(string iUserName)
 		{
-			if (mInventoryService == null) {
-				mInventoryService = new InventoryService(GetUnitOfWork(), iUserName);
-			}
 
 			return mInventoryService;
 		}

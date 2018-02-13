@@ -8,7 +8,7 @@ using System.Data.Entity;
 
 namespace PoS.Dal.Sql.Ctx.Repository
 {
-	public class ProductRepository : PoSBaseRepository<Product>
+	public class ProductRepository : PoSBaseRepository<Product>, IProductRepository
 	{
 		public ProductRepository(IPoSContext context) 
 			: base(context)
@@ -17,7 +17,9 @@ namespace PoS.Dal.Sql.Ctx.Repository
 
 		public IEnumerable<Product> GetProductByStockType(EStockType iStockTye)
 		{
-			return _dbSet.Where(p => p.StockType == iStockTye);
+
+			//_dbSet.ToList(); <--- Mabagal ya ini
+			return _dbSet.Where(p => p.StockType == iStockTye); // <--- Ini 
 		}
 
 		public Product GetProductByCode(string barcode)

@@ -38,5 +38,6 @@ namespace PoS.Dal.Mdl
 		{
 			get; set;
 		}
+		public virtual OrderLine OrderLine { get; set; }
 	}
 }

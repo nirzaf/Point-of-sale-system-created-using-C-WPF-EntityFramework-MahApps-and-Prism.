@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PoS.Dal.Sql.Ctx.Repository
 {
-	public class UserRepository : PoSBaseRepository<User>
+	public class UserRepository : PoSBaseRepository<User>, IUserRepository
 	{
 		public UserRepository (IPoSContext iContext)
 			: base (iContext)
@@ -18,20 +18,14 @@ namespace PoS.Dal.Sql.Ctx.Repository
 
 		public bool LogIn (string iUsername, string iPass)
 		{
-			int userCnt = 
-				_dbSet.Where (u => u.UserName == iUsername &&
-							  u.Password == iPass).Count ();
-
-			return userCnt != 0;
+			// TODO: Add Encryption and Decrypt
+			return _dbSet.Any(u => u.UserName == iUsername &&
+							 u.Password == iPass);
 		}
 
 		public User GetUserByUserName (string iUserName)
 		{
-			User    oMdl = new User();
-
-			oMdl = _dbSet.Where (u => u.UserName == iUserName).FirstOrDefault ();
-
-			return oMdl;
+			return _dbSet.FirstOrDefault(u => u.UserName == iUserName);
 		}
 	}
 }

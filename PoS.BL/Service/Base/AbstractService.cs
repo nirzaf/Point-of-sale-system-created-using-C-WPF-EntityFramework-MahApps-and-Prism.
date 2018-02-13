@@ -12,29 +12,29 @@ namespace PoS.BL.Service.Base
 	internal abstract class AbstractService
 	{
 		protected IPosUnitOfWork _uofw;
-		internal AbstractService (IPosUnitOfWork iUnitOfWork)
+		public AbstractService (IPosUnitOfWork iUnitOfWork)
 		{
 			_uofw = iUnitOfWork;
 		}
-		internal void Add<J> (J iEntity,
+		public void Add<J> (J iEntity,
 							PoSBaseRepository<J> iRepo) where J : class, IModel, new()
 		{
 			iRepo.Add (iEntity);
 		}
 
-		internal void Delete<J> (J iEntity,
+		public void Delete<J> (J iEntity,
 							PoSBaseRepository<J> iRepo) where J : class, IModel, new()
 		{
 			iRepo.Delete (iEntity);
 		}
 
-		internal void Update<J> (J iEntity,
+		public void Update<J> (J iEntity,
 							PoSBaseRepository<J> iRepo) where J : class, IModel, new()
 		{
 			iRepo.Update (iEntity);
 		}
 
-		internal int Commit ()
+		public int Commit ()
 		{
 			return _uofw.Commit ();
 		}

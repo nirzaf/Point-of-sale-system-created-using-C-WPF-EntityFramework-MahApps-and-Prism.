@@ -12,22 +12,21 @@ namespace PoS.BL.Service.Internal
 {
 	internal class InventoryService : AbstractService, IInventoryService
 	{
-		private string _userName;
-		public InventoryService(IPosUnitOfWork iUnitOfWork, string iLoginName)
+		private readonly IProductRepository _productRepo;
+		public InventoryService(IPosUnitOfWork iUnitOfWork,
+								IProductRepository iProductRepo)
 			:base (iUnitOfWork)
 		{
-			_userName = iLoginName;
+			_productRepo = iProductRepo;
 		}
 		public void AddProduct(ProductModel iModel)
 		{
 			Product product = iModel.GetProduct();
 
-			product.CreatedBy = _userName;
 			product.CreatedDate = DateTime.Now;
-			product.ModifiedBy = _userName;
 			product.ModifiedDate = DateTime.Now;
 
-			_uofw.ProductRepo.Add(product);
+			_productRepo.Add(product);
 			_uofw.Commit();
 		}
 
@@ -35,22 +34,20 @@ namespace PoS.BL.Service.Internal
 		{
 			Product product = iModel.GetProduct();
 
-			product.ModifiedBy = _userName;
 			product.ModifiedDate = DateTime.Now;
-
-			_uofw.ProductRepo.Update (product);
+			_productRepo.Update (product);
 			_uofw.Commit ();
 		}
 
 		public void DeleteProduct(ProductModel iModel)
 		{
-			_uofw.ProductRepo.Delete(iModel.GetProduct());
+			_productRepo.Delete(iModel.GetProduct());
 			_uofw.Commit ();
 		}
 
 		public List<ProductModel> GetAllProducts()
 		{
-			return _uofw.ProductRepo.GetAll().Select(p => new ProductModel(p)).ToList();
+			return _productRepo.GetAll().Select(p => new ProductModel(p)).ToList();
 		}
 
 		public ProductModel GetProductByBarCode(string iCode)
@@ -58,7 +55,7 @@ namespace PoS.BL.Service.Internal
 			Product product = new Product();
 			ProductModel oModel = null;
 
-			product = _uofw.ProductRepo.GetProductByCode(iCode);
+			product = _productRepo.GetProductByCode(iCode);
 
 			if (product != null)
 			{

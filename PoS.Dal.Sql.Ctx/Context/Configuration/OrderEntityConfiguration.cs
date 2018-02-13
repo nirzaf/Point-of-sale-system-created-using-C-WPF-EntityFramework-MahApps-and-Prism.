@@ -20,6 +20,7 @@ namespace PoS.Dal.Sql.Ctx.Configuration
 				.HasColumnAnnotation("Index",
 				new IndexAnnotation(new IndexAttribute("IDX_UQ_ORDBC")
 				{ IsUnique = true }));
+			HasRequired(o => o.OrderLine).WithMany(ol => ol.Orders).HasForeignKey(o => o.OrderLineId);
 		}
 	}
 }

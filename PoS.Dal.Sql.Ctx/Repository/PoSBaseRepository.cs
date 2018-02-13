@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PoS.Dal.Sql.Ctx.Repository
 {
-	public abstract class PoSBaseRepository<J> where J : class, IModel, new ()
+	public abstract class PoSBaseRepository<J>: IPosBaseRepository<J> where J: class, IModel, new()
 	{
 		protected IPoSContext _context;
 		protected IDbSet<J> _dbSet;

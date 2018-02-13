@@ -1,5 +1,6 @@
 ﻿using Microsoft.Practices.Unity;
 using PoS.Dal.Sql.Ctx.Context;
+using PoS.Dal.Sql.Ctx.Repository;
 using PoS.Dal.Sql.Ctx.Transaction;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,8 @@ namespace PoS.Dal.Sql.Ctx
 		{
 			container.RegisterType<IPoSContext, PoSContext>();
 			container.RegisterType<IPosUnitOfWork, PoSUnitOfWork>();
+			container.RegisterType<IUserRepository, UserRepository>();
+			container.RegisterType<IProductRepository, ProductRepository>();
 		}
 	}
 }
